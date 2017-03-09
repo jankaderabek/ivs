@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Calculator.ViewModel.Command
+namespace Calculator.ViewModel.Commands
 {
     public class RelayCommand : ICommand
     {
         private readonly Action<object> execute;
         private readonly Predicate<object> canExecute;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="execute"></param>
+
         public RelayCommand(Action<object> execute)
             : this(_ => true, execute)
         {
