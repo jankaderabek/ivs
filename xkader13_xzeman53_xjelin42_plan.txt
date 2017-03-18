@@ -1,0 +1,38 @@
+Plán projektu do předmětu IVS:
+- Všechny úkoly jsou založeny jako issues na GitHubu https://github.com/Glooby5/ivs
+- konkétné v úkolu číslo 11 je celý rozpis https://github.com/Glooby5/ivs/issues/11
+
+Termíny:
+#2 Základní struktura     17. 3.
+#3 Testy knihovna         19. 3.
+#6 Mockupy                19. 3.
+#4 Implementace knihovny  26. 3.
+#5 Vytvoření GUI          26. 3.
+#7 Instalátor a odinstalátor  2. 4.
+#9 Propojení GUI a knihovny   2. 4.
+#10 Profiling knihovny        9. 4.
+#12 Uživatelská dokumentace   16. 4.
+#8 Vygenerování programové dokumentace  16. 4.
+
+Přidělení úkolů
+- na GitHubu je vždy v úkolu přiřazen řešitel
+
+#2 Základní struktura projektu        xzeman53, Ondřej Zemánek, ondrejzemanek
+#3 Testy pro knihovnu                 xkader13, Jan Kadeřábek, Glooby5
+#4 Implementace matematické knihovny  xjelin42, Jelínek Dalibor, jelinet01
+#5 Vytvoření GUI                      xzeman53, Ondřej Zemánek, ondrejzemanek
+#6 Vytvoření mockup                   xjelin42, Jelínek Dalibor, jelinet01
+#7 Instalátor a odinstalátor          xkader13, Jan Kadeřábek, Glooby5
+#8 Vygenerování dokumentace           xkader13, Jan Kadeřábek, Glooby5
+#9 Propojení GUI a knihovna           xzeman53, Ondřej Zemánek, ondrejzemanek
+#10 Profiling matematické knihovny    xjelin42, Jelínek Dalibor, jelinet01
+#12 Uživatelská dokumentace           xkader13, Jan Kadeřábek, Glooby5
+
+Komunikační kanál
+ - Skupinový chat na Facebooku. Vzhledem k velikosti týmu jde o vhodnou variantu
+ dostupnosti členů. V případě většího týmu bychom volili Slack.
+
+Systém pro správu verzí
+ - Git, konkrétně služba GitHub
+ - GitHub budeme využívat pro správu verzé kódu, ale také pro přidělování úkolů
+ a komunikaci kolem úkolů.
