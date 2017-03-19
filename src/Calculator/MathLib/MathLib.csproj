@@ -60,10 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exception\OneOrMoreOperandsRequiredExeption.cs" />
+    <Compile Include="Functions\Advanced\Factorial.cs" />
     <Compile Include="Functions\Basic\Addition.cs" />
     <Compile Include="Functions\Basic\Division.cs" />
     <Compile Include="Functions\Basic\Multiplication.cs" />
     <Compile Include="Functions\Basic\Substraction.cs" />
+    <Compile Include="Interfaces\IAdvancedMethod.cs" />
     <Compile Include="Interfaces\ISimpleMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
