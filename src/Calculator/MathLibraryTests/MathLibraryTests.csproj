@@ -56,7 +56,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvancedMethods\AdditionTest.cs" />
+    <Compile Include="AdvancedMethods\PowerTest.cs" />
+    <Compile Include="AdvancedMethods\FactorialTest.cs" />
     <Compile Include="BasicMethods\AdditionTest.cs" />
     <Compile Include="BasicMethods\DivisionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

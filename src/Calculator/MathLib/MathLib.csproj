@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exception\OneOrMoreOperandsRequiredExeption.cs" />
+    <Compile Include="Functions\Advanced\Power.cs" />
     <Compile Include="Functions\Advanced\Factorial.cs" />
     <Compile Include="Functions\Basic\Addition.cs" />
     <Compile Include="Functions\Basic\Division.cs" />
