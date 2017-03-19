@@ -59,7 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exception\InvalidArgumentOfLogarithm.cs" />
     <Compile Include="Exception\OneOrMoreOperandsRequiredExeption.cs" />
+    <Compile Include="Functions\Advanced\Logarithm.cs" />
     <Compile Include="Functions\Advanced\Root.cs" />
     <Compile Include="Functions\Advanced\Power.cs" />
     <Compile Include="Functions\Advanced\Factorial.cs" />
