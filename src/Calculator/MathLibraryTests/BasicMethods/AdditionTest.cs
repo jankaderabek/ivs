@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MathLib.Exception;
-using MathLib.Functions;
-using MathLibraryTests;
+﻿using MathLib.Exception;
+using MathLib.Functions.Basic;
 using Xunit;
 
-namespace Tests
+namespace MathLibraryTests.BasicMethods
 {
     public class AdditionTest
     {

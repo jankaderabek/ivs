@@ -56,11 +56,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdditionTest.cs" />
-    <Compile Include="DivisionTest.cs" />
+    <Compile Include="BasicMethods\AdditionTest.cs" />
+    <Compile Include="BasicMethods\DivisionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MultiplicationTest.cs" />
-    <Compile Include="SubstractionTest.cs" />
+    <Compile Include="BasicMethods\MultiplicationTest.cs" />
+    <Compile Include="BasicMethods\SubstractionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

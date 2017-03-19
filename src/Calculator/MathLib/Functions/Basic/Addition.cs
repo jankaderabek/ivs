@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MathLib.Interfaces;
 
-namespace MathLib.Functions
+namespace MathLib.Functions.Basic
 {
-    public class Substraction : ISimpleMethod
+    public class Addition : ISimpleMethod
     {
         public double Calculate()
         {
@@ -16,7 +12,6 @@ namespace MathLib.Functions
 
         public void AddOperand(double operand)
         {
-            return;
             throw new NotImplementedException();
         }
     }

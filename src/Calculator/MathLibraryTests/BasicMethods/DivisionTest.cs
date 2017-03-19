@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MathLib.Exception;
-using MathLib.Functions;
+using MathLib.Functions.Basic;
 using Xunit;
 
-namespace MathLibraryTests
+namespace MathLibraryTests.BasicMethods
 {
     public class DivisionTest
     {
