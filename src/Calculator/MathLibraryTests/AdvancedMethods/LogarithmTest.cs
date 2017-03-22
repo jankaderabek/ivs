@@ -5,7 +5,7 @@ using Xunit;
 
 namespace MathLibraryTests.AdvancedMethods
 {
-    public class LogairthmTest
+    public class LogarithmTest
     {
         [Fact]
         public void SimpleCalculateTest()

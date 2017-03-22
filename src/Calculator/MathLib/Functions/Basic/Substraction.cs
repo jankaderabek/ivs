@@ -17,7 +17,6 @@ namespace MathLib.Functions.Basic
 
         public void AddOperand(double operand)
         {
-            return;
             throw new NotImplementedException();
         }
     }
