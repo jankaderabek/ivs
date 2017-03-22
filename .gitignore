@@ -1,5 +1,2 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/src/Calculator/MathLibraryTests/bin/Debug
+﻿/src/Calculator/MathLibraryTests/bin/Debug
+/src/Calculator/packages

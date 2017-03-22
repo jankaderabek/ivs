@@ -3,3 +3,6 @@ Calculator/bin
 Calculator/obj
 MathLib/bin
 MathLib/obj
+MathLibraryTests/bin
+MathLibraryTests/obj
+*.db
