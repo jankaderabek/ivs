@@ -10,6 +10,8 @@ namespace MathLib.Interfaces
     {
         double Calculate();
 
+        double Calculate(double firstOperand, double secondOperand);
+
         void AddOperand(double operand);
     }
 }

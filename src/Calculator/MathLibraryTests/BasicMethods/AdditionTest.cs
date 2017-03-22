@@ -17,7 +17,7 @@ namespace MathLibraryTests.BasicMethods
         }
 
         [Fact]
-        public void FloatAdditionTestt()
+        public void FloatAdditionTest()
         {
             Addition addition = new Addition();
             addition.AddOperand(5.2);
@@ -53,6 +53,14 @@ namespace MathLibraryTests.BasicMethods
             addition.AddOperand(5);
 
             Assert.Equal(20, addition.Calculate());
+        }
+
+        [Fact]
+        public void OverloadCalculateTest()
+        {
+            Addition addition = new Addition();
+
+            Assert.Equal(20, addition.Calculate(10, 10));
         }
     }
 }

@@ -10,6 +10,11 @@ namespace MathLib.Functions.Basic
             throw new NotImplementedException();
         }
 
+        public double Calculate(double firstOperand, double secondOperand)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddOperand(double operand)
         {
             return;

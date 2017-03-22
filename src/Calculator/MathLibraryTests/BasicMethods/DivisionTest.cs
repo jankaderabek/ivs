@@ -18,7 +18,7 @@ namespace MathLibraryTests.BasicMethods
         }
 
         [Fact]
-        public void FloatDivisionTestt()
+        public void FloatDivisionTest()
         {
             Division division = new Division();
             division.AddOperand(5);
@@ -64,6 +64,14 @@ namespace MathLibraryTests.BasicMethods
             division.AddOperand(5);
 
             Assert.Equal(5, division.Calculate());
+        }
+
+        [Fact]
+        public void OverloadCalculateTest()
+        {
+            Division division = new Division();
+
+            Assert.Equal(2, division.Calculate(40, 20));
         }
     }
 }

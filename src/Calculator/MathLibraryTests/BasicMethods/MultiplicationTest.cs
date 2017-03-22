@@ -17,7 +17,7 @@ namespace MathLibraryTests.BasicMethods
         }
 
         [Fact]
-        public void FloatMultiplicationTestt()
+        public void FloatMultiplicationTest()
         {
             Multiplication multiplication = new Multiplication();
             multiplication.AddOperand(0.5);
@@ -53,6 +53,14 @@ namespace MathLibraryTests.BasicMethods
             multiplication.AddOperand(2);
 
             Assert.Equal(40, multiplication.Calculate());
+        }
+
+        [Fact]
+        public void OverloadCalculateTest()
+        {
+            Multiplication multiplication = new Multiplication();
+
+            Assert.Equal(100, multiplication.Calculate(10, 10));
         }
     }
 }

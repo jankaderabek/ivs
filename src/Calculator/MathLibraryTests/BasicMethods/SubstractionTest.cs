@@ -17,7 +17,7 @@ namespace MathLibraryTests.BasicMethods
         }
 
         [Fact]
-        public void FloatSubstractionTestt()
+        public void FloatSubstractionTest()
         {
             Substraction substraction = new Substraction();
             substraction.AddOperand(5.2);
@@ -53,6 +53,14 @@ namespace MathLibraryTests.BasicMethods
             substraction.AddOperand(5);
 
             Assert.Equal(20, substraction.Calculate());
+        }
+
+        [Fact]
+        public void OverloadCalculateTest()
+        {
+            Substraction substraction = new Substraction();
+
+            Assert.Equal(10, substraction.Calculate(20, 10));
         }
     }
 }
