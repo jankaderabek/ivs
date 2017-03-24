@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="Calculator.Controls.Keyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:uc="clr-namespace:Calculator.Controls.UserControls"
+             DataContext="{StaticResource MainViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="575" d:DesignWidth="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <uc:SpecialKey  KeyValue="m"   Grid.Row="0" />
+            <uc:FunctionKey KeyValue="PW" Grid.Row="2" />
+            <uc:FunctionKey KeyValue="7"   Grid.Row="4" />
+            <uc:FunctionKey KeyValue="4"   Grid.Row="6" />
+            <uc:FunctionKey KeyValue="1"   Grid.Row="8" />
+            <uc:FunctionKey KeyValue="0"   Grid.Row="10"/>
+        </Grid>
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <uc:SpecialKey  KeyValue="m+"  Grid.Row="0" />
+            <uc:FunctionKey KeyValue="RT"  Grid.Row="2" />
+            <uc:FunctionKey KeyValue="8"   Grid.Row="4" />
+            <uc:FunctionKey KeyValue="5"   Grid.Row="6" />
+            <uc:FunctionKey KeyValue="2"   Grid.Row="8" />
+            <uc:FunctionKey KeyValue="+/-" Grid.Row="10"/>
+        </Grid>
+        <Grid Grid.Column="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <uc:SpecialKey  KeyValue="mr" Grid.Row="0" />
+            <uc:FunctionKey KeyValue="!"  Grid.Row="2" />
+            <uc:FunctionKey KeyValue="9"  Grid.Row="4" />
+            <uc:FunctionKey KeyValue="6"  Grid.Row="6" />
+            <uc:FunctionKey KeyValue="3"  Grid.Row="8" />
+            <uc:FunctionKey KeyValue="."  Grid.Row="10"/>
+        </Grid>
+        <Grid Grid.Column="7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <uc:SpecialKey  KeyValue="mc" Grid.Row="0" />
+            <uc:FunctionKey KeyValue="/" Grid.Row="2" />
+            <uc:FunctionKey KeyValue="x" Grid.Row="4" />
+            <uc:FunctionKey KeyValue="-" Grid.Row="6" />
+            <uc:FunctionKey KeyValue="+" Grid.Row="8" />
+            <uc:FunctionKey KeyValue="=" Grid.Row="10" />
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,19 +1,32 @@
-﻿using System.ComponentModel;
+﻿using System.Windows.Controls;
 
 namespace Calculator.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public partial class MainViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-       
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            var handler = this.PropertyChanged;
+        #region CommandExecuteMethods
 
-            if (handler != null)
+        public void ExecCloseClickCommand(object obj)
+        {
+            (obj as MainWindow)?.Close();
+        }
+
+        public void ExecHelpClickCommand(object obj)
+        {
+
+        }
+
+        public void ExecFunctionKeyClickCommand(object obj)
+        {
+            var key = (obj as Label)?.Content?.ToString();
+
+            switch (key)
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                default:
+                    break;
             }
         }
+
+        #endregion
     }
 }

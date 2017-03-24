@@ -3,10 +3,46 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Calculator"
+        xmlns:controls="clr-namespace:Calculator.Controls"
         mc:Ignorable="d"
-        Title="Calculator" Height="500" Width="350" Topmost="True">
+        MouseLeftButtonDown="WindowDragAndMove"
+        Title="Calculator" Height="775" Width="450" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        
+        <Grid Name="Background">
+            <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="1">
+                <Canvas.Background>
+                    <LinearGradientBrush EndPoint="0.3,1" StartPoint="0.5,0">
+                        <GradientStop Color="#045CA9" Offset="0"/>
+                        <GradientStop Color="#33A5A7" Offset="0.3"/>
+                        <GradientStop Color="#639293" Offset="0.4"/>
+                        <GradientStop Color="#7A8184" Offset="0.5"/>
+                        <GradientStop Color="#72747A" Offset="0.6"/>
+                        <GradientStop Color="#432A3F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Canvas.Background>
+            </Canvas>
+            <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Canvas.Background>
+                    <LinearGradientBrush EndPoint="0.7,1" StartPoint="0.5,0" Opacity="0.5">
+                        <GradientStop Color="#045CA9" Offset="0"/>
+                        <GradientStop Color="#33A5A7" Offset="0.3"/>
+                        <GradientStop Color="#639293" Offset="0.4"/>
+                        <GradientStop Color="#7A8184" Offset="0.5"/>
+                        <GradientStop Color="#72747A" Offset="0.6"/>
+                        <GradientStop Color="#432A3F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Canvas.Background>
+            </Canvas>
+        </Grid>
+        <Grid Name="Controls">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="115*"/>
+            </Grid.RowDefinitions>
+            <controls:TopToolbar Grid.Row="0"/>
+            <controls:Display Grid.Row="1"/>
+            <controls:Keyboard Grid.Row="2"/>
+        </Grid>
     </Grid>
 </Window>
