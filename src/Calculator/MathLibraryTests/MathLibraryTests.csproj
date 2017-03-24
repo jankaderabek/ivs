@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdvancedMethods\LogarithmTest.cs" />
+    <Compile Include="AdvancedMethods\NegationTest.cs" />
     <Compile Include="AdvancedMethods\RootTest.cs" />
     <Compile Include="AdvancedMethods\PowerTest.cs" />
     <Compile Include="AdvancedMethods\FactorialTest.cs" />
@@ -77,6 +78,9 @@
       <Project>{9A484F30-4E61-4F4E-BA54-026AB5A8445E}</Project>
       <Name>MathLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
