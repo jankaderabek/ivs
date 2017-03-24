@@ -1,23 +1,38 @@
 ﻿using System;
 using MathLib.Interfaces;
+using System.Collections.Generic;
 
 namespace MathLib.Functions.Basic
 {
     public class Addition : ISimpleMethod
     {
+        private List<double> operands;
+
+        public Addition() {
+            operands = new List<double>();
+        }
+
         public double Calculate()
         {
-            throw new NotImplementedException();
+            if (operands.Count == 0) {
+                throw new Exception.OneOrMoreOperandsRequiredExeption();
+            }
+            double result = 0;
+            foreach (double o in operands)
+            {
+                result = o + result;
+            }
+            return result;
         }
 
         public double Calculate(double firstOperand, double secondOperand)
         {
-            throw new NotImplementedException();
+            return firstOperand + secondOperand;
         }
 
         public void AddOperand(double operand)
         {
-            throw new NotImplementedException();
+            operands.Add(operand);
         }
     }
 }

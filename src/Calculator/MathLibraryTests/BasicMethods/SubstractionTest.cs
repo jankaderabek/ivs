@@ -23,7 +23,8 @@ namespace MathLibraryTests.BasicMethods
             substraction.AddOperand(5.2);
             substraction.AddOperand(5.5);
 
-            Assert.Equal(-0.3, substraction.Calculate());
+            Assert.Equal(-0.3, substraction.Calculate(), 10);
+
         }
 
         [Fact]
@@ -52,7 +53,7 @@ namespace MathLibraryTests.BasicMethods
             substraction.AddOperand(5);
             substraction.AddOperand(5);
 
-            Assert.Equal(20, substraction.Calculate());
+            Assert.Equal(-10, substraction.Calculate());
         }
 
         [Fact]
