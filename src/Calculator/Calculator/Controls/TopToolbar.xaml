@@ -38,14 +38,14 @@
             </Style>
         </Grid.Resources>
         <Canvas x:Name="Background" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Black" Opacity="0.3"/>
-        <Border x:Name="CloseButton" HorizontalAlignment="Right" Width="40" Focusable="True" KeyboardNavigation.IsTabStop="True">
+        <Border x:Name="CloseButton" HorizontalAlignment="Right" Width="40"  Focusable="True" FocusVisualStyle="{x:Null}">
             <Border.InputBindings>
                 <MouseBinding MouseAction="LeftClick" Command="{Binding CloseClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
                 <KeyBinding Key="Enter" Command="{Binding CloseClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
             </Border.InputBindings>
-            <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Foreground="White" FontSize="18">X</Label>
+            <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Foreground="White" FontSize="25" Margin="0,-6,0,0">X</Label>
         </Border>
-        <Border x:Name="HelpButton" HorizontalAlignment="Right" Width="40" Focusable="True" KeyboardNavigation.IsTabStop="True" Margin="0,0,40,0" >
+        <Border x:Name="HelpButton" HorizontalAlignment="Right" Width="40" Margin="0,0,40,0" Focusable="True" FocusVisualStyle="{x:Null}">
             <Border.InputBindings>
                 <MouseBinding MouseAction="LeftClick" Command="{Binding HelpClickCommand}" />
                 <KeyBinding Key="Enter" Command="{Binding HelpClickCommand}" />

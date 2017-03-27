@@ -73,6 +73,7 @@
     <Compile Include="Controls\UserControls\SpecialKey.xaml.cs">
       <DependentUpon>SpecialKey.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Entities\HistoryItem.cs" />
     <Compile Include="Model\Enums\FunctionKeysEnum.cs" />
     <Compile Include="Model\Enums\SpecialKeysEnum.cs" />
     <Compile Include="ViewModel\CommandsMainViewModel.cs" />

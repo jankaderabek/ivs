@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:Calculator.Controls"
+        DataContext="{StaticResource MainViewModel}"
         mc:Ignorable="d"
         MouseLeftButtonDown="WindowDragAndMove"
         Title="Calculator" Height="775" Width="450" WindowStyle="None" ResizeMode="NoResize">
@@ -40,9 +41,27 @@
                 <RowDefinition Height="33*"/>
                 <RowDefinition Height="115*"/>
             </Grid.RowDefinitions>
-            <controls:TopToolbar Grid.Row="0"/>
-            <controls:Display Grid.Row="1"/>
             <controls:Keyboard Grid.Row="2"/>
+            <controls:Display Grid.Row="1"/>
+            <controls:TopToolbar Grid.Row="0"/>
         </Grid>
     </Grid>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="." Key="Decimal"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="0" Key="NumPad0"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="1" Key="NumPad1"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="2" Key="NumPad2"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="3" Key="NumPad3"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="4" Key="NumPad4"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="5" Key="NumPad5"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="6" Key="NumPad6"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="7" Key="NumPad7"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="8" Key="NumPad8"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="9" Key="NumPad9"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="/" Key="Divide"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="*" Key="Multiply"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="-" Key="Subtract"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="+" Key="Add"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="=" Key="Enter"/>
+    </Window.InputBindings>
 </Window>
