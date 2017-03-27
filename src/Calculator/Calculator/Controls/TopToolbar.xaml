@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Calculator.Controls.TopToolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             DataContext="{StaticResource MainViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="35" d:DesignWidth="450">
+    <Grid>
+        <Grid.Resources>
+            <Storyboard x:Key="Select">
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To=".5" Duration="0:0:.05"/>
+            </Storyboard>
+            <Storyboard x:Key="UnSelect">
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" From=".5" To="1" Duration="0:0:.2"/>
+            </Storyboard>
+            <Storyboard x:Key="Click" >
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.1" To=".5" Duration="0:0:0.2"/>
+            </Storyboard>
+            <Style TargetType="Border">
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard Storyboard="{StaticResource Select}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="GotKeyboardFocus">
+                        <BeginStoryboard Storyboard="{StaticResource Select}"/>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="LostKeyboardFocus">
+                        <BeginStoryboard Storyboard="{StaticResource UnSelect}"/>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard Storyboard="{StaticResource UnSelect}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeftButtonUp">
+                        <BeginStoryboard Storyboard="{StaticResource Click}" />
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <Canvas x:Name="Background" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Black" Opacity="0.3"/>
+        <Border x:Name="CloseButton" HorizontalAlignment="Right" Width="40"  Focusable="True" FocusVisualStyle="{x:Null}">
+            <Border.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding CloseClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+                <KeyBinding Key="Enter" Command="{Binding CloseClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+            </Border.InputBindings>
+            <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Foreground="White" FontSize="25" Margin="0,-6,0,0">X</Label>
+        </Border>
+        <Border x:Name="HelpButton" HorizontalAlignment="Right" Width="40" Margin="0,0,40,0" Focusable="True" FocusVisualStyle="{x:Null}">
+            <Border.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding HelpClickCommand}" />
+                <KeyBinding Key="Enter" Command="{Binding HelpClickCommand}" />
+            </Border.InputBindings>
+            <Grid>
+                <Ellipse Stroke="White" StrokeThickness="1.5" Width="25" Height="25"></Ellipse>
+                <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Foreground="White" FontSize="18">?</Label>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

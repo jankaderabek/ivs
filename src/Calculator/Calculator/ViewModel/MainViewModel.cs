@@ -1,19 +1,63 @@
-﻿using System.ComponentModel;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Shapes;
 
 namespace Calculator.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public partial class MainViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-       
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            var handler = this.PropertyChanged;
+        #region CommandExecuteMethods
 
-            if (handler != null)
+        public void ExecCloseClickCommand(object obj)
+        {
+            (obj as MainWindow)?.Close();
+        }
+
+        public void ExecHelpClickCommand(object obj)
+        {
+
+        }
+
+        public void ExecSpecialKeyClickCommand(object obj)
+        {
+            this.ConsoleText += (obj as Label)?.Content?.ToString();
+        }
+
+        public void ExecFunctionKeyClickCommand(object obj)
+        {
+            var control = (ContentControl) obj;
+
+            if (control?.Content is Label)
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                this.ConsoleText += ((Label)control.Content)?.Content?.ToString();
+            }
+
+            if(control?.Content is Path)
+            {
+                this.ConsoleText += ((Path)control.Content)?.Tag?.ToString();
             }
         }
+
+        public void ExecKeyPressCommand(object obj)
+        {
+            this.ConsoleText += obj?.ToString();
+        }
+
+        public void ExecHistoryClickCommand(object obj)
+        {
+
+        }
+
+        public void ExecCopyClickCommand(object obj)
+        {
+            Clipboard.SetText(this.ConsoleText);
+        }
+
+        public void ExecBackClickCommand(object obj)
+        {
+            this.ConsoleText = string.Empty;
+        }
+
+        #endregion
     }
 }

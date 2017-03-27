@@ -3,10 +3,65 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Calculator"
+        xmlns:controls="clr-namespace:Calculator.Controls"
+        DataContext="{StaticResource MainViewModel}"
         mc:Ignorable="d"
-        Title="Calculator" Height="500" Width="350" Topmost="True">
+        MouseLeftButtonDown="WindowDragAndMove"
+        Title="Calculator" Height="775" Width="450" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        
+        <Grid Name="Background">
+            <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="1">
+                <Canvas.Background>
+                    <LinearGradientBrush EndPoint="0.3,1" StartPoint="0.5,0">
+                        <GradientStop Color="#045CA9" Offset="0"/>
+                        <GradientStop Color="#33A5A7" Offset="0.3"/>
+                        <GradientStop Color="#639293" Offset="0.4"/>
+                        <GradientStop Color="#7A8184" Offset="0.5"/>
+                        <GradientStop Color="#72747A" Offset="0.6"/>
+                        <GradientStop Color="#432A3F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Canvas.Background>
+            </Canvas>
+            <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Canvas.Background>
+                    <LinearGradientBrush EndPoint="0.7,1" StartPoint="0.5,0" Opacity="0.5">
+                        <GradientStop Color="#045CA9" Offset="0"/>
+                        <GradientStop Color="#33A5A7" Offset="0.3"/>
+                        <GradientStop Color="#639293" Offset="0.4"/>
+                        <GradientStop Color="#7A8184" Offset="0.5"/>
+                        <GradientStop Color="#72747A" Offset="0.6"/>
+                        <GradientStop Color="#432A3F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Canvas.Background>
+            </Canvas>
+        </Grid>
+        <Grid Name="Controls">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="115*"/>
+            </Grid.RowDefinitions>
+            <controls:Keyboard Grid.Row="2"/>
+            <controls:Display Grid.Row="1"/>
+            <controls:TopToolbar Grid.Row="0"/>
+        </Grid>
     </Grid>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="." Key="Decimal"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="0" Key="NumPad0"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="1" Key="NumPad1"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="2" Key="NumPad2"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="3" Key="NumPad3"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="4" Key="NumPad4"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="5" Key="NumPad5"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="6" Key="NumPad6"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="7" Key="NumPad7"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="8" Key="NumPad8"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="9" Key="NumPad9"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="/" Key="Divide"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="*" Key="Multiply"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="-" Key="Subtract"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="+" Key="Add"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="=" Key="Enter"/>
+    </Window.InputBindings>
 </Window>

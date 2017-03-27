@@ -33,11 +33,7 @@ namespace Calculator.ViewModel.Commands
 
         public void OnCanExecuteChanged()
         {
-            var onCanExecuteChanged = this.CanExecuteChanged;
-            if (onCanExecuteChanged != null)
-            {
-                onCanExecuteChanged(this, EventArgs.Empty);
-            }
+            this.CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

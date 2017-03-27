@@ -1,0 +1,253 @@
+﻿<UserControl x:Class="Calculator.Controls.Keyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:uc="clr-namespace:Calculator.Controls.UserControls"
+             DataContext="{StaticResource MainViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="575" d:DesignWidth="450">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Margin" Value="0,-8,0,2"/>
+        </Style>
+        <Style TargetType="Path">
+            <Setter Property="Fill" Value="White"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <uc:SpecialKey KeyValue="m" Grid.Row="0" />
+            <uc:FunctionKey Grid.Row="2" >
+                <uc:FunctionKey.KeyValue>
+                    <Path Tag="Power" RenderTransformOrigin="0.5,0.5" Margin="10">
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1"/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                        <Path.Data>
+                            M278.914,1477.002
+                            c-26.006-27.998-17.002-45,10-20c25.996,22.998,33.994,10,52.002-82.002l15-80l-27.002-27.002c-27.998-30-47.998-35-55-15
+                            c-5,15-12.998,9.004-21.006-20c-5.996-20-3.994-22.998,19.004-22.998c37.998,0,77.998,32.002,129.004,102.998
+                            c43.994,62.998,95.996,157.998,95.996,177.002c0,5-15.996,10-35,10c-37.998,0-42.998-7.002-20-24.004
+                            c12.998-10,10.996-20-17.002-77.998C407.908,1360,390.915,1330,386.912,1330s-10,30-14.004,65.996
+                            c-3.994,37.002-10.996,75-16.992,85C342.908,1507.002,304.91,1505,278.914,1477.002z M52.917,1357.002
+                            c-18.008-15-26.006-27.998-22.002-36.006c5.996-8.994,12.998-6.992,27.998,9.004c25,27.002,37.002,17.002,52.998-47.002
+                            c12.002-45.996,11.006-48.994-15.996-83.994c-42.998-55-59.004-66.006-69.004-49.004c-10.996,17.002-15,12.998-23.994-22.002
+                            c-6.006-25-4.004-27.998,17.998-27.998c15.996,0,35.996,14.004,60,42.002c20,22.998,35.996,45,35.996,50c0,3.994,5,7.998,10,7.998
+                            c6.006,0,10-12.002,10-27.998c0-37.002,26.006-72.002,54.004-72.002c23.994,0,73.994,45,62.998,57.002
+                            C249.91,1160,237.917,1155,226.912,1145c-25-22.998-32.998-15-52.002,50.996l-15,52.002l39.004,46.006
+                            c32.998,37.998,42.998,43.994,53.994,35c17.002-14.004,19.004-12.002,28.008,23.994c5.996,24.004,3.994,27.002-18.008,27.002
+                            c-15.996,0-35.996-14.004-59.99-42.002c-20-22.998-36.006-45-36.006-50c0-3.994-3.994-7.998-10-7.998c-5,0-10,12.002-10,27.998
+                            c0,34.004-25,72.002-47.998,72.002C89.91,1380,68.914,1369.004,52.917,1357.002z
+                        </Path.Data>
+                    </Path>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="4" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="7"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="6" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="4"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="8" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="1"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="10" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="0"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+        </Grid>
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <uc:SpecialKey KeyValue="m+" Grid.Row="0" />
+            <uc:FunctionKey Grid.Row="2" >
+                <uc:FunctionKey.KeyValue>
+                    <Path Tag="Root" RenderTransformOrigin="0.5,0.5" Margin="10">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="-1"/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                            <Path.Data>
+                                M38.594,975.659
+                                c-12.251-12.109-21.03-29.438-21.03-38.081c0-10.303,8.779-8.691,21.03,3.418c35.117,34.663,45.527,24.409,66.758-76.216
+                                c19.194-91.694,19.194-100.386-17.559-135.054c-28.174-25.972-42.256-29.438-47.368-13.916c-10.61,26.025-40.42,10.498-40.42-24.165
+                                c0-81.44,163.125,48.384,252.554,202.573c56.147,98.774,56.147,102.192,0,102.192c-36.753,0-42.061-5.225-27.974-22.363
+                                c14.087-15.718,8.779-41.743-19.39-97.163c-27.974-55.415-40.229-67.524-43.696-43.354
+                                C133.325,987.768,96.572,1032.934,38.594,975.659z M510.625,888.994c-7.144-22.407-49.209-162.685-91.27-311.65
+                                c-42.256-150.576-80.845-273.76-85.952-273.76c-5.303,0-29.81,51.992-57.979,117.715c-70.229,169.766-68.398,167.959-133.32,135.098
+                                c-29.81-15.527-54.312-36.133-54.312-46.582c0-10.498,10.42-10.498,33.281,0c29.81,15.527,40.425,1.807,105.146-130.02
+                                c38.789-81.24,72.065-156.045,72.065-164.736c0-8.594,10.42-15.527,24.502-15.527c15.723,0,57.979,112.744,124.546,338.066
+                                l101.67,337.681H775.43c187.637,0,224.57,3.413,224.57,26.02c0,22.363-38.789,25.977-237.031,25.977
+                                C533.281,927.275,524.512,925.469,510.625,888.994z M654.355,606.787c-38.398-33.057-42.051-41.748-17.559-43.555
+                                c15.723,0,30,8.643,30,17.334c0,10.498,10.215,17.529,24.512,17.529c13.887,0,31.445-31.25,42.051-70.947
+                                c17.559-66.152,13.887-78.018-28.164-130.02c-29.609-37.939-57.773-55.273-75.332-50.195c-19.395,6.836-31.465-3.613-38.789-26.016
+                                c-5.117-19.141-3.281-38.281,1.836-41.504c26.328-14.111,89.629,25.977,119.219,74.355c38.789,64.307,59.629,69.336,59.629,12.305
+                                c0-84.854,87.793-116.299,142.285-52.041c28.184,34.707,5.117,52.041-30,24.209c-33.281-29.629-50.84-6.885-68.398,83.057
+                                c-8.77,50.195-3.281,67.529,36.953,109.072c26.328,27.832,61.445,48.779,75.352,46.973c17.559-3.613,30,10.449,33.262,34.668
+                                c10.625,70.942-57.773,44.966-128.008-48.779c-35.117-46.582-43.887-51.611-43.887-24.17c0,38.281-45.332,111.03-69.844,111.03
+                                C710.703,650.093,680.684,630.952,654.355,606.787z
+                            </Path.Data>
+                    </Path>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="4" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="8"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="6" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="5"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="8" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="2"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="10" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="+/-" FontSize="36"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+        </Grid>
+        <Grid Grid.Column="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <uc:SpecialKey  KeyValue="mr" Grid.Row="0" />
+            <uc:FunctionKey Grid.Row="2" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="!"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="4" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="9"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="6" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="6"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="8" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="3"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="10" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="."/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+        </Grid>
+        <Grid Grid.Column="7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <uc:SpecialKey  KeyValue="mc" Grid.Row="0" />
+            <uc:FunctionKey Grid.Row="2" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="÷" FontSize="60" Margin="0,-20,0,0" />
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="4" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="×" FontSize="60" Margin="0,-20,0,0" />
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="6" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="-"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="8" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="+"/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+            <uc:FunctionKey Grid.Row="10" >
+                <uc:FunctionKey.KeyValue>
+                    <Label Content="="/>
+                </uc:FunctionKey.KeyValue>
+            </uc:FunctionKey>
+        </Grid>
+    </Grid>
+</UserControl>
