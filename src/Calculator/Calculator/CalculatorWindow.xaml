@@ -6,7 +6,7 @@
         xmlns:controls="clr-namespace:Calculator.Controls"
         DataContext="{StaticResource MainViewModel}"
         mc:Ignorable="d"
-        MouseLeftButtonDown="WindowDragAndMove"
+        MouseLeftButtonDown="WindowDragAndMove" Icon="Images/icon.ico"
         Title="Calculator" Height="600" Width="350" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <Grid Name="Background">
