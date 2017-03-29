@@ -13,6 +13,16 @@ namespace Calculator.ViewModel
             (obj as MainWindow)?.Close();
         }
 
+        public void ExecMinimalizeClickCommand(object obj)
+        {
+            var mainWindow = obj as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.WindowState = WindowState.Minimized;
+            }
+        }
+
         public void ExecHelpClickCommand(object obj)
         {
 
@@ -50,12 +60,15 @@ namespace Calculator.ViewModel
 
         public void ExecCopyClickCommand(object obj)
         {
-            Clipboard.SetText(this.ConsoleText);
+            this.ConsoleText = string.Empty;
         }
 
         public void ExecBackClickCommand(object obj)
         {
-            this.ConsoleText = string.Empty;
+            if (this.ConsoleText.Length > 0)
+            {
+                this.ConsoleText = this.ConsoleText.Remove(this.ConsoleText.Length - 1);
+            }
         }
 
         #endregion
