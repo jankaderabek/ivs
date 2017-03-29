@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              DataContext="{StaticResource MainViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="35" d:DesignWidth="450">
+             d:DesignHeight="35" d:DesignWidth="350">
     <Grid>
         <Grid.Resources>
             <Storyboard x:Key="Select">
@@ -38,20 +38,37 @@
             </Style>
         </Grid.Resources>
         <Canvas x:Name="Background" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Black" Opacity="0.3"/>
-        <Border x:Name="CloseButton" HorizontalAlignment="Right" Width="40"  Focusable="True" FocusVisualStyle="{x:Null}">
+        <Label Content="Calculator" FontSize="16" FontWeight="DemiBold" Foreground="White" Margin="5,0"/>
+        <Border x:Name="CloseButton" HorizontalAlignment="Right" Width="35"  Focusable="True" FocusVisualStyle="{x:Null}" Background="Transparent" Margin="5,0">
             <Border.InputBindings>
                 <MouseBinding MouseAction="LeftClick" Command="{Binding CloseClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
                 <KeyBinding Key="Enter" Command="{Binding CloseClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
             </Border.InputBindings>
-            <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Foreground="White" FontSize="25" Margin="0,-6,0,0">X</Label>
+            <Path Fill="White" Stretch="Fill" Margin="7">
+                <Path.Data>
+                    M28.941,31.786L0.613,60.114c-0.787,0.786-0.787,2.062,0,2.849c0.393,0.395,0.909,0.59,1.424,0.59
+                    c0.516,0,1.031-0.195,1.424-0.59l28.541-28.541l28.541,28.541c0.395,0.395,0.909,0.59,1.424,0.59c0.516,0,1.031-0.195,1.424-0.59
+                    c0.787-0.787,0.787-2.063,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.063-0.786-2.848,0
+                    L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z
+                </Path.Data>
+            </Path>
         </Border>
-        <Border x:Name="HelpButton" HorizontalAlignment="Right" Width="40" Margin="0,0,40,0" Focusable="True" FocusVisualStyle="{x:Null}">
+        <Border x:Name="MinimalizeButton" HorizontalAlignment="Right" Width="35" Margin="0,0,40,0" Focusable="True" FocusVisualStyle="{x:Null}" Background="Transparent">
+            <Border.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding MinimalizeClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                <KeyBinding Key="Enter" Command="{Binding MinimalizeClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+            </Border.InputBindings>
+            <Grid>
+                <Rectangle Stretch="Fill" Height="1.5" Fill="White" Margin="10,16,10,0"/>
+            </Grid>
+        </Border>
+        <Border x:Name="HelpButton" HorizontalAlignment="Right" Width="35" Margin="0,0,75,0" Focusable="True" FocusVisualStyle="{x:Null}" Background="Transparent">
             <Border.InputBindings>
                 <MouseBinding MouseAction="LeftClick" Command="{Binding HelpClickCommand}" />
                 <KeyBinding Key="Enter" Command="{Binding HelpClickCommand}" />
             </Border.InputBindings>
             <Grid>
-                <Ellipse Stroke="White" StrokeThickness="1.5" Width="25" Height="25"></Ellipse>
+                <Ellipse Stroke="White" StrokeThickness="1.5" Width="23" Height="23"></Ellipse>
                 <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Foreground="White" FontSize="18">?</Label>
             </Grid>
         </Border>

@@ -7,7 +7,7 @@
         DataContext="{StaticResource MainViewModel}"
         mc:Ignorable="d"
         MouseLeftButtonDown="WindowDragAndMove"
-        Title="Calculator" Height="775" Width="450" WindowStyle="None" ResizeMode="NoResize">
+        Title="Calculator" Height="600" Width="350" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <Grid Name="Background">
             <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="1">
@@ -38,8 +38,8 @@
         <Grid Name="Controls">
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="33*"/>
-                <RowDefinition Height="115*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
             <controls:Keyboard Grid.Row="2"/>
             <controls:Display Grid.Row="1"/>
