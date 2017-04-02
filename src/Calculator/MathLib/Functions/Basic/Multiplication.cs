@@ -8,10 +8,12 @@ namespace MathLib.Functions.Basic
     public class Multiplication : ISimpleMethod
     {
         private List<double> operands;
+
         public Multiplication()
         {
             operands = new List<double>();
         }
+
         public double Calculate()
         {
             if (!operands.Any())

@@ -16,8 +16,10 @@ namespace MathLib.Functions.Basic
         public double Calculate()
         {
             if (operands.Count == 0)
+            {
                 throw new OneOrMoreOperandsRequiredExeption();
-
+            }
+            
             return sum(operands);
         }
 
@@ -36,7 +38,10 @@ namespace MathLib.Functions.Basic
             double result = 0;
 
             foreach (var operand in operands)
+            {
                 result += operand;
+            }
+            
 
             return result;
         }
