@@ -7,12 +7,12 @@ namespace MathLib.Functions.Advanced
     {
         public double Calculate(double operand)
         {
-            throw new NotImplementedException();
+            return Math.Sqrt(operand);
         }
 
         public double Calculate(double operand, int exponent)
         {
-            throw new NotImplementedException();
+            return Math.Pow(operand, (1.0 / exponent));
         }
     }
 }
