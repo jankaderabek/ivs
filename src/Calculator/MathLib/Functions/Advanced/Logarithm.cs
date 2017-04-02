@@ -10,10 +10,12 @@ namespace MathLib.Functions.Advanced
         /// </summary>
         public double Calculate(double operand)
         {
-            if (operand <= 0) {
+            if (operand <= 0)
+            {
                 throw new Exception.InvalidArgumentOfLogarithm();
             }
-            return Math.Log(operand,10);
+
+            return Math.Log(operand, 10);
         }
     }
 }

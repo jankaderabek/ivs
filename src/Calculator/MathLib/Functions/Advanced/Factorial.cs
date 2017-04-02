@@ -8,7 +8,10 @@ namespace MathLib.Functions.Advanced
         public double Calculate(double operand)
         {
             if (operand.Equals(0))
+            {
                 return 1;
+            }
+
             return operand * Calculate(operand - 1);
         }
     }

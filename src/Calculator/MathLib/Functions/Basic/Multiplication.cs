@@ -1,27 +1,31 @@
 ﻿using System;
 using MathLib.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MathLib.Functions.Basic
 {
     public class Multiplication : ISimpleMethod
     {
         private List<double> operands;
-        public Multiplication() {
+        public Multiplication()
+        {
             operands = new List<double>();
         }
         public double Calculate()
         {
-            if (operands.Count == 0)
+            if (!operands.Any())
             {
                 throw new Exception.OneOrMoreOperandsRequiredExeption();
             }
-            if (operands.Count == 1) return operands[0];
-                double result = operands[0] * operands[1];
-            for (int i = 2; i < operands.Count; i++)
+
+            double result = operands.First();
+
+            foreach (var operand in operands.Skip(1))
             {
-                result = result * operands[i];
+                result *= operand;
             }
+
             return result;
         }
 

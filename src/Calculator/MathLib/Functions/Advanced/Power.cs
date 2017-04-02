@@ -12,7 +12,7 @@ namespace MathLib.Functions.Advanced
 
         public double Calculate(double operand, double exponent)
         {
-           return Math.Pow(operand, exponent);
+            return Math.Pow(operand, exponent);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using MathLib.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MathLib.Functions.Basic
 {
@@ -8,39 +9,55 @@ namespace MathLib.Functions.Basic
     {
         private List<double> operands;
 
-        public Division(){
+        public Division()
+        {
             operands = new List<double>();
         }
         public double Calculate()
         {
-            if (operands.Count == 0 )
+            if (!operands.Any())
             {
                 throw new Exception.OneOrMoreOperandsRequiredExeption();
             }
-            if (operands[0].Equals(0)) return 0;
-            if (operands.Count == 1) return operands[0];
-            if (operands[1].Equals(0)){
-                throw new DivideByZeroException();
-            }
-            double result = operands[0]/operands[1];
-            for (int i = 2; i < operands.Count; i++)
+
+            if (operands.Count == 1)
             {
-                if (operands[i].Equals(0)) {
+                return operands.First();
+            }
+
+            double result = operands.First();
+
+            foreach (double operand in operands.Skip(1))
+            {
+                if (isDoubleZero(operand))
+                {
                     throw new DivideByZeroException();
                 }
-                result = result / operands[i];
+
+                result = result / operand;
             }
+
             return result;
         }
 
         public double Calculate(double firstOperand, double secondOperand)
         {
+            if (isDoubleZero(secondOperand))
+            {
+                throw new DivideByZeroException();
+            }
+
             return firstOperand / secondOperand;
         }
 
         public void AddOperand(double operand)
         {
             operands.Add(operand);
+        }
+
+        private bool isDoubleZero(double num)
+        {
+            return (Math.Abs(num) < double.Epsilon);
         }
     }
 }

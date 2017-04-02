@@ -1,28 +1,33 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
+using MathLib.Exception;
 using MathLib.Interfaces;
-using System.Collections.Generic;
 
 namespace MathLib.Functions.Basic
 {
     public class Substraction : ISimpleMethod
     {
-        private List<double> operands;
-        public Substraction(){
+        private readonly List<double> operands;
+
+        public Substraction()
+        {
             operands = new List<double>();
         }
+
         public double Calculate()
         {
-            if (operands.Count == 0)
+            if (!operands.Any())
             {
-                throw new Exception.OneOrMoreOperandsRequiredExeption();
+                throw new OneOrMoreOperandsRequiredExeption();
             }
-            double result = 0;
-            if (operands.Count == 1) return operands[0];
-            result = operands[0] - operands[1];
-            for (int i = 2; i < operands.Count; i++)
+
+            double result = operands.First();
+
+            foreach (var operand in operands.Skip(1))
             {
-                result = result - operands[i];
+                result -= operand;
             }
+
             return result;
         }
 

@@ -7,7 +7,7 @@ namespace MathLib.Functions.Advanced
     {
         public double Calculate(double operand)
         {
-            return operand = -1*operand;
+            return operand = -1 * operand;
         }
     }
 }
