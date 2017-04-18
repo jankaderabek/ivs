@@ -177,10 +177,12 @@ namespace Calculator.Model
 
         public void SelectOperation(OperationEnum function)
         {
-            if (FirstOperand.HasValue)
+            if (!FirstOperand.HasValue)
             {
-                this.SelectedOperation = function;
+                FirstOperandString = Result.ToString();
             }
+
+            this.SelectedOperation = function;
         }
 
         public void AddDigit(string value)
@@ -294,7 +296,7 @@ namespace Calculator.Model
 
         private static string RemoveLastDigit(string value)
         {
-            return value.Length > 1 ? value.Substring(0, value.Length - 1) : 0.ToString();
+            return value.Length > 1 ? value.Substring(0, value.Length - 1) : string.Empty;
         }
 
         private static bool IsSingleOperandOperation(OperationEnum function)
