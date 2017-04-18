@@ -11,7 +11,7 @@ using MathLib.Functions.Basic;
 namespace Calculator.Model
 {
     public delegate void ActualValueChangedHandler(string value);
-    public delegate void OperationChangedHandler(string value);
+    public delegate void FormulaChangedHandler(string value);
     public delegate void HistoryItemsChangedHandler(ObservableCollection<HistoryItem> history);
 
     internal class MainModel
@@ -25,19 +25,27 @@ namespace Calculator.Model
 
         public double? FirstOperand => ConvertStringToDouble(firstOperandString);
         public double? SecondOperand => ConvertStringToDouble(secondOperandString);
+        public string Formula
+        {
+            get
+            {
+                string operation = (selectedOperation == null ? string.Empty : StringEnum.GetStringValue(selectedOperation));
+                return $"{FirstOperand} {operation} {SecondOperand}";
+            }
+        }
 
-        public OperationEnum? SelectedOperation
+        private OperationEnum? SelectedOperation
         {
             get { return selectedOperation; }
             set
             {
                 selectedOperation = value;
-                OperationChanged?.Invoke(selectedOperation == null ? string.Empty : StringEnum.GetStringValue(selectedOperation));
+                FormulaChanged?.Invoke(Formula);
             }
         }
 
         public event ActualValueChangedHandler ActualValueChanged;
-        public event OperationChangedHandler OperationChanged;
+        public event FormulaChangedHandler FormulaChanged;
         public event HistoryItemsChangedHandler HistoryChanged;
 
         private double Result
@@ -64,6 +72,7 @@ namespace Calculator.Model
             {
                 firstOperandString = value;
                 ActualValueChanged?.Invoke(FirstOperandString);
+                FormulaChanged?.Invoke(Formula);
             }
         }
         public string SecondOperandString
@@ -77,6 +86,7 @@ namespace Calculator.Model
             {
                 secondOperandString = value;
                 ActualValueChanged?.Invoke(SecondOperandString);
+                FormulaChanged?.Invoke(Formula);
             }
         }
 
@@ -180,6 +190,11 @@ namespace Calculator.Model
             if (!FirstOperand.HasValue)
             {
                 FirstOperandString = Result.ToString();
+            }
+
+            if (IsSingleOperandOperation(function))
+            {
+                SecondOperandString = string.Empty;
             }
 
             this.SelectedOperation = function;
