@@ -40,11 +40,6 @@ namespace Calculator.ViewModel
 
         }
 
-        public void ExecSpecialKeyClickCommand(object obj)
-        {
-
-        }
-
         public void ExecFunctionKeyClickCommand(object obj)
         {
             var control = obj as ContentControl;

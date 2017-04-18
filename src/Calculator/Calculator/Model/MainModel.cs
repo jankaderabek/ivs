@@ -14,6 +14,7 @@ namespace Calculator.Model
 
     internal class MainModel
     {
+        private MemoryItem memory;
         private ObservableCollection<HistoryItem> history;
         private OperationEnum? selectedOperation;
         private string firstOperand;
@@ -44,6 +45,9 @@ namespace Calculator.Model
         {
             history = new ObservableCollection<HistoryItem>();
             history.CollectionChanged += (sender, e) => HistoryChanged?.Invoke(history);
+
+            memory = new MemoryItem();
+
             Clear();
         }
 
@@ -59,6 +63,35 @@ namespace Calculator.Model
                     break;
                 case FunctionEnum.RemoveLastDigit:
                     RemoveLast();
+                    break;
+                case FunctionEnum.MemorySave:
+                    memory.SaveToMemory(Result);
+                    break;
+                case FunctionEnum.MemoryRecall:
+                    if (selectedOperation.HasValue)
+                    {
+                        secondOperand = memory.Memory.ToString(CultureInfo.InvariantCulture);
+
+                        if (SecondOperand != null)
+                        {
+                            Result = SecondOperand.Value;
+                        }
+                    }
+                    else
+                    {
+                        firstOperand = memory.Memory.ToString(CultureInfo.InvariantCulture);
+
+                        if (FirstOperand != null)
+                        {
+                            Result = FirstOperand.Value;
+                        }
+                    }
+                    break;
+                case FunctionEnum.MemoryAddition:
+                    memory.AddMemory(Result);
+                    break;
+                case FunctionEnum.MemorySubstraction:
+                    memory.SubMemory(Result);
                     break;
                 default:
                     break;

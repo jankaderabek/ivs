@@ -49,7 +49,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <uc:SpecialKey Tag="{x:Static enums:FunctionEnum.MemoryClean}" KeyValue="ms" Grid.Row="0" />
+            <uc:SpecialKey Tag="{x:Static enums:FunctionEnum.MemorySave}" KeyValue="ms" Grid.Row="0" />
             <uc:FunctionKey Grid.Row="2" Tag="{x:Static enums:OperationEnum.Power}">
                 <uc:FunctionKey.KeyValue>
                     <Path RenderTransformOrigin="0.5,0.5" Margin="17,20">

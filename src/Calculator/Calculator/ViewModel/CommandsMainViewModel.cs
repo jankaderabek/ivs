@@ -18,7 +18,7 @@ namespace Calculator.ViewModel
         public ICommand CloseClickCommand => this.closeClickCommand ?? (this.closeClickCommand = new RelayCommand(this.ExecCloseClickCommand));
         public ICommand MinimalizeClickCommand => this.minimalizeClickCommand ?? (this.minimalizeClickCommand = new RelayCommand(this.ExecMinimalizeClickCommand));
         public ICommand HelpClickCommand => this.helpClickCommand ?? (this.helpClickCommand = new RelayCommand(this.ExecHelpClickCommand));
-        public ICommand SpecialKeyClickCommand => this.specialKeyClickCommand ?? (this.specialKeyClickCommand = new RelayCommand(this.ExecSpecialKeyClickCommand));
+        public ICommand SpecialKeyClickCommand => this.specialKeyClickCommand ?? (this.specialKeyClickCommand = new RelayCommand(this.ExecFunctionKeyClickCommand));
         public ICommand FunctionKeyClickCommand => this.functionKeyClickCommand ?? (this.functionKeyClickCommand = new RelayCommand(this.ExecFunctionKeyClickCommand));
         public ICommand KeyPressCommand => this.keyPressCommand ?? (this.keyPressCommand = new RelayCommand(this.ExecKeyPressCommand));
         public ICommand HistoryClickCommand => this.historyClickCommand ?? (this.historyClickCommand = new RelayCommand(this.ExecHistoryClickCommand));

@@ -4,7 +4,7 @@
     {
         MemoryAddition,
         MemorySubstraction,
-        MemoryClean,
+        MemorySave,
         MemoryRecall,
         Result,
         Clear,
