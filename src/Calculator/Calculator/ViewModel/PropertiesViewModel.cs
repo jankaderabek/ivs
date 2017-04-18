@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Calculator.Model.Entities;
 
@@ -18,7 +19,7 @@ namespace Calculator.ViewModel
 
             set
             {
-                this.historyItemsSource = value;
+                this.historyItemsSource = new ObservableCollection<HistoryItem>(value.Take(historyLimit));
                 OnPropertyChanged();
             }
         }
@@ -38,6 +39,26 @@ namespace Calculator.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        private string selectedOperation;
+
+        public string SelectedOperation
+        {
+            get
+            {
+                return selectedOperation; 
+                
+            }
+            set
+            {
+                selectedOperation = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

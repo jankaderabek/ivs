@@ -1,4 +1,5 @@
-﻿using Calculator.Model.Enums;
+﻿using System.Globalization;
+using Calculator.Model.Enums;
 using Calculator.Model.Enums.Helpers;
 
 namespace Calculator.Model.Entities
@@ -31,7 +32,7 @@ namespace Calculator.Model.Entities
             {
                 if (this.SecondOperand.HasValue)
                 {
-                    return $"{this.FirstOperand} {StringEnum.GetStringValue(this.Function)} {this.SecondOperand} = {this.Result}";
+                    return $"{this.FirstOperand} {StringEnum.GetStringValue(this.Function)} {this.SecondOperand.Value} = {this.Result}";
                 }
 
                 return $"{this.FirstOperand}{StringEnum.GetStringValue(this.Function)} = {this.Result}";

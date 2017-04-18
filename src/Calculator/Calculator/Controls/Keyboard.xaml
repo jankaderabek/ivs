@@ -204,7 +204,7 @@
             </uc:FunctionKey>
             <uc:FunctionKey Grid.Row="10" >
                 <uc:FunctionKey.KeyValue>
-                    <Label Content="."/>
+                    <Label Content=","/>
                 </uc:FunctionKey.KeyValue>
             </uc:FunctionKey>
         </Grid>

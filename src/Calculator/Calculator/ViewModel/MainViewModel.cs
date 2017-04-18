@@ -4,18 +4,21 @@ using System.Windows.Controls;
 using Calculator.Model;
 using Calculator.Model.Entities;
 using Calculator.Model.Enums;
+using Calculator.Model.Enums.Helpers;
 
 namespace Calculator.ViewModel
 {
     public partial class MainViewModel
     {
         private MainModel model;
+        private const int historyLimit = 2;
 
         public MainViewModel()
         {
             model = new MainModel();
-            model.ResultValueChanged += (value) => this.ConsoleText = value;
+            model.ActualValueChanged += (value) => this.ConsoleText = value;
             model.HistoryChanged += (history) => this.HistoryItemsSource = history;
+            model.OperationChanged += (value) => this.SelectedOperation = value;
         }
 
         #region CommandExecuteMethods

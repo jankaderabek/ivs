@@ -19,7 +19,7 @@ namespace Calculator.ViewModel.Converters
                 length = (value as double?).Value.ToString(CultureInfo.InvariantCulture).Length;
             }
 
-            var size = 50 - ((double)(length - 9) / 3.5) * 5.0;
+            var size = 50 - (double)(length - 9) * 3.0;
 
             return size < 50 ? size : 50;
         }

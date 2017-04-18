@@ -4,27 +4,40 @@ using System.Globalization;
 using System.Linq;
 using Calculator.Model.Entities;
 using Calculator.Model.Enums;
+using Calculator.Model.Enums.Helpers;
 using MathLib.Functions.Advanced;
 using MathLib.Functions.Basic;
 
 namespace Calculator.Model
 {
-    public delegate void ResultValueChangedHandler(double value);
+    public delegate void ActualValueChangedHandler(string value);
+    public delegate void OperationChangedHandler(string value);
     public delegate void HistoryItemsChangedHandler(ObservableCollection<HistoryItem> history);
 
     internal class MainModel
     {
-        private MemoryItem memory;
-        private ObservableCollection<HistoryItem> history;
+        private readonly MemoryItem memory;
+        private readonly ObservableCollection<HistoryItem> history;
         private OperationEnum? selectedOperation;
-        private string firstOperand;
-        private string secondOperand;
+        private string firstOperandString;
+        private string secondOperandString;
         private double result;
 
-        public double? FirstOperand => ConvertStringToDouble(firstOperand);
-        public double? SecondOperand => ConvertStringToDouble(secondOperand);
+        public double? FirstOperand => ConvertStringToDouble(firstOperandString);
+        public double? SecondOperand => ConvertStringToDouble(secondOperandString);
 
-        public event ResultValueChangedHandler ResultValueChanged;
+        public OperationEnum? SelectedOperation
+        {
+            get { return selectedOperation; }
+            set
+            {
+                selectedOperation = value;
+                OperationChanged?.Invoke(selectedOperation == null ? string.Empty : StringEnum.GetStringValue(selectedOperation));
+            }
+        }
+
+        public event ActualValueChangedHandler ActualValueChanged;
+        public event OperationChangedHandler OperationChanged;
         public event HistoryItemsChangedHandler HistoryChanged;
 
         private double Result
@@ -37,9 +50,38 @@ namespace Calculator.Model
             set
             {
                 this.result = value;
-                ResultValueChanged?.Invoke(Result);
+                ActualValueChanged?.Invoke(Result.ToString());
             }
         }
+        public string FirstOperandString
+        {
+            get
+            {
+                return firstOperandString;
+            }
+
+            set
+            {
+                firstOperandString = value;
+                ActualValueChanged?.Invoke(FirstOperandString);
+            }
+        }
+        public string SecondOperandString
+        {
+            get
+            {
+                return secondOperandString;
+            }
+
+            set
+            {
+                secondOperandString = value;
+                ActualValueChanged?.Invoke(SecondOperandString);
+            }
+        }
+
+        public string ActualValue => SelectedOperation.HasValue ? SecondOperandString : FirstOperandString;
+
 
         public MainModel()
         {
@@ -68,9 +110,9 @@ namespace Calculator.Model
                     memory.SaveToMemory(Result);
                     break;
                 case FunctionEnum.MemoryRecall:
-                    if (selectedOperation.HasValue)
+                    if (SelectedOperation.HasValue)
                     {
-                        secondOperand = memory.Memory.ToString(CultureInfo.InvariantCulture);
+                        SecondOperandString = memory.Memory.ToString();
 
                         if (SecondOperand != null)
                         {
@@ -79,7 +121,7 @@ namespace Calculator.Model
                     }
                     else
                     {
-                        firstOperand = memory.Memory.ToString(CultureInfo.InvariantCulture);
+                        FirstOperandString = memory.Memory.ToString();
 
                         if (FirstOperand != null)
                         {
@@ -100,9 +142,9 @@ namespace Calculator.Model
 
         public void RemoveLast()
         {
-            if (selectedOperation.HasValue)
+            if (SelectedOperation.HasValue)
             {
-                secondOperand = RemoveLastDigit(secondOperand);
+                SecondOperandString = RemoveLastDigit(SecondOperandString);
 
                 if (SecondOperand != null)
                 {
@@ -111,7 +153,7 @@ namespace Calculator.Model
             }
             else
             {
-                firstOperand = RemoveLastDigit(firstOperand);
+                FirstOperandString = RemoveLastDigit(FirstOperandString);
 
                 if (FirstOperand != null)
                 {
@@ -122,8 +164,10 @@ namespace Calculator.Model
 
         public void Clear()
         {
-            Result = 0;
-            NewMathProblem();
+            result = 0;
+            FirstOperandString = string.Empty;
+            SecondOperandString = string.Empty;
+            SelectedOperation = null;
         }
 
         public void CalculateResult()
@@ -135,56 +179,29 @@ namespace Calculator.Model
         {
             if (FirstOperand.HasValue)
             {
-                this.selectedOperation = function;
-
-                if (IsSingleOperandOperation(function))
-                {
-                    CalculateFunction();
-                }
+                this.SelectedOperation = function;
             }
         }
 
-        public bool AddDigit(string value)
+        public void AddDigit(string value)
         {
-            if (this.selectedOperation.HasValue)
+            if (this.SelectedOperation.HasValue)
             {
-                if (CheckNumberExtensibility(secondOperand, value))
-                {
-                    secondOperand += value;
-
-                    if (SecondOperand != null)
-                    {
-                        Result = SecondOperand.Value;
-                    }
-
-                    return true;
-                }
+                SecondOperandString = AddDigit(SecondOperandString, value);
             }
             else
             {
-                if (CheckNumberExtensibility(firstOperand, value))
-                {
-                    firstOperand += value;
-
-                    if (FirstOperand != null)
-                    {
-                        Result = FirstOperand.Value;
-                    }
-
-                    return true;
-                }
+                FirstOperandString = AddDigit(FirstOperandString, value);
             }
-
-            return false;
         }
 
         public void SelectHistory(HistoryItem item)
         {
             item = history.First((h) => h == item);
 
-            if (selectedOperation.HasValue)
+            if (SelectedOperation.HasValue)
             {
-                secondOperand = item.Result.ToString(CultureInfo.InvariantCulture);
+                SecondOperandString = item.Result.ToString();
 
                 if (SecondOperand != null)
                 {
@@ -193,7 +210,7 @@ namespace Calculator.Model
             }
             else
             {
-                firstOperand = item.Result.ToString(CultureInfo.InvariantCulture);
+                FirstOperandString = item.Result.ToString();
 
                 if (FirstOperand != null)
                 {
@@ -204,25 +221,25 @@ namespace Calculator.Model
 
         private void NewMathProblem()
         {
-            firstOperand = string.Empty;
-            secondOperand = string.Empty;
-            selectedOperation = null;
+            firstOperandString = string.Empty;
+            secondOperandString = string.Empty;
+            SelectedOperation = null;
         }
 
         private void AddToHistory(HistoryItem item)
         {
-            history.Add(item);
+            history.Insert(0, item);
         }
 
         private void CalculateFunction()
         {
-            if (selectedOperation == null ||
+            if (SelectedOperation == null ||
                 !FirstOperand.HasValue)
             {
                 return;
             }
 
-            if (!IsSingleOperandOperation(selectedOperation.Value))
+            if (!IsSingleOperandOperation(SelectedOperation.Value))
             {
                 if (!SecondOperand.HasValue)
                 {
@@ -230,7 +247,7 @@ namespace Calculator.Model
                 }
             }
 
-            switch (selectedOperation.Value)
+            switch (SelectedOperation.Value)
             {
                 case OperationEnum.Negation:
                     Result = new Negation().Calculate(FirstOperand.Value);
@@ -268,12 +285,11 @@ namespace Calculator.Model
                     throw new ArgumentOutOfRangeException();
             }
 
-            AddToHistory(IsSingleOperandOperation(selectedOperation.Value)
-                        ? new HistoryItem(FirstOperand.Value, selectedOperation.Value, Result)
-                        : new HistoryItem(FirstOperand.Value, SecondOperand.Value, selectedOperation.Value, Result));
+            AddToHistory(IsSingleOperandOperation(SelectedOperation.Value)
+                        ? new HistoryItem(FirstOperand.Value, SelectedOperation.Value, Result)
+                        : new HistoryItem(FirstOperand.Value, SecondOperand.Value, SelectedOperation.Value, Result));
 
             NewMathProblem();
-            firstOperand = Result.ToString(CultureInfo.InvariantCulture);
         }
 
         private static string RemoveLastDigit(string value)
@@ -293,7 +309,7 @@ namespace Calculator.Model
                 return null;
             }
 
-            return double.Parse(stringValue.Trim('.'), CultureInfo.InvariantCulture);
+            return double.Parse(stringValue.Trim(','));
         }
 
         private static bool CheckNumberExtensibility(string value, string addition)
@@ -302,10 +318,30 @@ namespace Calculator.Model
 
             if (!int.TryParse(addition, out number))
             {
+                if (addition == "," && 
+                    !value.Contains(","))
+                {
+                    return true;
+                }
                 return false;
             }
 
             return !(number == 0 && value == "0");
+        }
+        private static string AddDigit(string value, string addition)
+        {
+            if (CheckNumberExtensibility(value, addition))
+            {
+                if (value.Length == 0 &&
+                    addition == ",")
+                {
+                    addition = "0" + addition;
+                }
+
+                value += addition;
+            }
+
+            return value;
         }
     }
 }

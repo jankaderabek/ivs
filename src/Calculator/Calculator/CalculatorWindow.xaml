@@ -48,7 +48,7 @@
         </Grid>
     </Grid>
     <Window.InputBindings>
-        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="." Key="Decimal"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="," Key="Decimal"/>
         <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="0" Key="NumPad0"/>
         <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="1" Key="NumPad1"/>
         <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="2" Key="NumPad2"/>
