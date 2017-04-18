@@ -202,7 +202,7 @@ namespace Calculator.Model
 
         public void AddDigit(string value)
         {
-            if (this.SelectedOperation.HasValue)
+            if (this.SelectedOperation.HasValue && !IsSingleOperandOperation(SelectedOperation.Value))
             {
                 SecondOperandString = AddDigit(SecondOperandString, value);
             }
