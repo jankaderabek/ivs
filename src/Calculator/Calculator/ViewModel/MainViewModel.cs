@@ -18,7 +18,7 @@ namespace Calculator.ViewModel
             model = new MainModel();
             model.ActualValueChanged += (value) => this.ConsoleText = value;
             model.HistoryChanged += (history) => this.HistoryItemsSource = history;
-            model.OperationChanged += (value) => this.SelectedOperation = value;
+            model.OperationChanged += (value) => this.SelectedOperation = $"{model.FirstOperand} {value} {model.SecondOperand}";
         }
 
         #region CommandExecuteMethods
