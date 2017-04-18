@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Calculator"
              xmlns:mvvm="clr-namespace:Calculator.ViewModel"
+             xmlns:converters="clr-namespace:Calculator.ViewModel.Converters"
              StartupUri="CalculatorWindow.xaml">
     <Application.Resources>
         <mvvm:MainViewModel x:Key="MainViewModel" />
+        <converters:DoubleToShortStringConverter x:Key="DoubleToShortStringConverter"/>
+        <converters:ValueLengthToFontSizeConverter x:Key="ValueLengthToFontSizeConverter" />
     </Application.Resources>
 </Application>

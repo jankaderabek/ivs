@@ -1,11 +1,23 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Shapes;
+using Calculator.Model;
+using Calculator.Model.Entities;
+using Calculator.Model.Enums;
 
 namespace Calculator.ViewModel
 {
     public partial class MainViewModel
     {
+        private MainModel model;
+
+        public MainViewModel()
+        {
+            model = new MainModel();
+            model.ResultValueChanged += (value) => this.ConsoleText = value;
+            model.HistoryChanged += (history) => this.HistoryItemsSource = history;
+        }
+
         #region CommandExecuteMethods
 
         public void ExecCloseClickCommand(object obj)
@@ -30,47 +42,85 @@ namespace Calculator.ViewModel
 
         public void ExecSpecialKeyClickCommand(object obj)
         {
-            this.ConsoleText += (obj as Label)?.Content?.ToString();
+
         }
 
         public void ExecFunctionKeyClickCommand(object obj)
         {
-            var control = (ContentControl) obj;
+            var control = obj as ContentControl;
 
-            if (control?.Content is Label)
+            if (control?.Tag is OperationEnum)
             {
-                this.ConsoleText += ((Label)control.Content)?.Content?.ToString();
+                model.SelectOperation((OperationEnum)control.Tag);
             }
-
-            if(control?.Content is Path)
+            else if (control?.Tag is FunctionEnum)
             {
-                this.ConsoleText += ((Path)control.Content)?.Tag?.ToString();
+                InvokeFunction((FunctionEnum)control.Tag);
+            }
+            else if (control?.Content is Label)
+            {
+                model.AddDigit(((Label)control.Content).Content?.ToString());
             }
         }
 
         public void ExecKeyPressCommand(object obj)
         {
-            this.ConsoleText += obj?.ToString();
+            if (obj is OperationEnum)
+            {
+                model.SelectOperation((OperationEnum)obj);
+            }
+            else if (obj is FunctionEnum)
+            {
+                InvokeFunction((FunctionEnum)obj);
+            }
+            else if (obj is string)
+            {
+                model.AddDigit((string) obj);
+            }
         }
 
         public void ExecHistoryClickCommand(object obj)
         {
-
+            if (obj is HistoryItem)
+            {
+                model.SelectHistory((HistoryItem) obj);
+            }
         }
 
-        public void ExecCopyClickCommand(object obj)
+        public void ExecClearClickCommand(object obj)
         {
-            this.ConsoleText = string.Empty;
+            model.Clear();
         }
 
         public void ExecBackClickCommand(object obj)
         {
-            if (this.ConsoleText.Length > 0)
-            {
-                this.ConsoleText = this.ConsoleText.Remove(this.ConsoleText.Length - 1);
-            }
+            model.RemoveLast();
         }
 
         #endregion
+
+        private void InvokeFunction(FunctionEnum function)
+        {
+            try
+            {
+                model.InvokeFunction(function);
+            }
+            catch (DivideByZeroException)
+            {
+                this.ConsoleText = "Nulou se nedá dělit.";
+            }
+        }
+
+        private void CalculateResult()
+        {
+            try
+            {
+                model.CalculateResult();
+            }
+            catch (DivideByZeroException)
+            {
+                this.ConsoleText = "Nulou se nedá dělit.";
+            }
+        }
     }
 }

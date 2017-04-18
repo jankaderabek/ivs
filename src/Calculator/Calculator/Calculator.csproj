@@ -77,10 +77,15 @@
       <DependentUpon>SpecialKey.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Entities\HistoryItem.cs" />
-    <Compile Include="Model\Enums\FunctionKeysEnum.cs" />
-    <Compile Include="Model\Enums\SpecialKeysEnum.cs" />
+    <Compile Include="Model\Enums\Helpers\StringEnum.cs" />
+    <Compile Include="Model\Enums\OperationEnum.cs" />
+    <Compile Include="Model\Enums\FunctionEnum.cs" />
+    <Compile Include="Model\Enums\Helpers\StringValue.cs" />
+    <Compile Include="Model\MainModel.cs" />
     <Compile Include="ViewModel\CommandsMainViewModel.cs" />
     <Compile Include="ViewModel\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModel\Converters\DoubleToShortStringConverter.cs" />
+    <Compile Include="ViewModel\Converters\ValueLengthToFontSizeConverter.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PropertiesViewModel.cs" />
     <Page Include="CalculatorWindow.xaml">
@@ -143,11 +148,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MathLib\MathLib.csproj">
+      <Project>{9a484f30-4e61-4f4e-ba54-026ab5a8445e}</Project>
+      <Name>MathLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

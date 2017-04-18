@@ -43,7 +43,7 @@
         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Ellipse x:Name="ButtonBackground" Fill="LightGray" Opacity="0" Stroke="White" StrokeThickness="2" Stretch="Fill"/>
             <Ellipse Stroke="White" StrokeThickness="2" Stretch="Fill"/>
-            <ContentControl IsTabStop="False" Focusable="False" Margin="0" x:Name="FunctionName" Content="{Binding KeyValue, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}" Tag="{Binding KeyValue, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"/>
+            <ContentControl IsTabStop="False" Focusable="False" Margin="0" x:Name="FunctionName" Content="{Binding KeyValue, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}" Tag="{Binding Tag, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"/>
         </Grid>
     </Border>
 </UserControl>

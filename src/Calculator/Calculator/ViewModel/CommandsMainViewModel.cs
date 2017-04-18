@@ -12,7 +12,7 @@ namespace Calculator.ViewModel
         private ICommand functionKeyClickCommand;
         private ICommand keyPressCommand;
         private ICommand historyClickCommand;
-        private ICommand copyClickCommand;
+        private ICommand clearClickCommand;
         private ICommand backClickCommand;
 
         public ICommand CloseClickCommand => this.closeClickCommand ?? (this.closeClickCommand = new RelayCommand(this.ExecCloseClickCommand));
@@ -22,7 +22,7 @@ namespace Calculator.ViewModel
         public ICommand FunctionKeyClickCommand => this.functionKeyClickCommand ?? (this.functionKeyClickCommand = new RelayCommand(this.ExecFunctionKeyClickCommand));
         public ICommand KeyPressCommand => this.keyPressCommand ?? (this.keyPressCommand = new RelayCommand(this.ExecKeyPressCommand));
         public ICommand HistoryClickCommand => this.historyClickCommand ?? (this.historyClickCommand = new RelayCommand(this.ExecHistoryClickCommand));
-        public ICommand CopyClickCommand => this.copyClickCommand ?? (this.copyClickCommand = new RelayCommand(this.ExecCopyClickCommand));
+        public ICommand ClearClickCommand => this.clearClickCommand ?? (this.clearClickCommand = new RelayCommand(this.ExecClearClickCommand));
         public ICommand BackClickCommand => this.backClickCommand ?? (this.backClickCommand = new RelayCommand(this.ExecBackClickCommand));
     }
 }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:Calculator.Controls"
+        xmlns:enums="clr-namespace:Calculator.Model.Enums"
         DataContext="{StaticResource MainViewModel}"
         mc:Ignorable="d"
         MouseLeftButtonDown="WindowDragAndMove" Icon="Images/icon.ico"
@@ -58,10 +59,12 @@
         <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="7" Key="NumPad7"/>
         <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="8" Key="NumPad8"/>
         <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="9" Key="NumPad9"/>
-        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="/" Key="Divide"/>
-        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="*" Key="Multiply"/>
-        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="-" Key="Subtract"/>
-        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="+" Key="Add"/>
-        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="=" Key="Enter"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="{x:Static enums:OperationEnum.Divide}" Key="Divide"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="{x:Static enums:OperationEnum.Multiply}" Key="Multiply"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="{x:Static enums:OperationEnum.Minus}" Key="Subtract"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="{x:Static enums:OperationEnum.Plus}" Key="Add"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="{x:Static enums:FunctionEnum.Result}" Key="Enter"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="{x:Static enums:FunctionEnum.RemoveLastDigit}" Key="Back"/>
+        <KeyBinding Command="{Binding KeyPressCommand}" CommandParameter="{x:Static enums:FunctionEnum.Clear}" Key="Delete"/>
     </Window.InputBindings>
 </Window>

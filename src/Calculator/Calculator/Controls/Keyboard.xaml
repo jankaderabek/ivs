@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:uc="clr-namespace:Calculator.Controls.UserControls"
+             xmlns:enums="clr-namespace:Calculator.Model.Enums"
              DataContext="{StaticResource MainViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="439" d:DesignWidth="350">
@@ -48,10 +49,10 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <uc:SpecialKey KeyValue="ms" Grid.Row="0" />
-            <uc:FunctionKey Grid.Row="2" >
+            <uc:SpecialKey Tag="{x:Static enums:FunctionEnum.MemoryClean}" KeyValue="ms" Grid.Row="0" />
+            <uc:FunctionKey Grid.Row="2" Tag="{x:Static enums:OperationEnum.Power}">
                 <uc:FunctionKey.KeyValue>
-                    <Path Tag="Power" RenderTransformOrigin="0.5,0.5" Margin="17,20">
+                    <Path RenderTransformOrigin="0.5,0.5" Margin="17,20">
                         <Path.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleY="-1"/>
@@ -112,10 +113,10 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <uc:SpecialKey KeyValue="m+" Grid.Row="0" />
-            <uc:FunctionKey Grid.Row="2" >
+            <uc:SpecialKey Tag="{x:Static enums:FunctionEnum.MemoryAddition}" KeyValue="m+" Grid.Row="0" />
+            <uc:FunctionKey Grid.Row="2" Tag="{x:Static enums:OperationEnum.Root}">
                 <uc:FunctionKey.KeyValue>
-                    <Path Tag="Root" RenderTransformOrigin="0.5,0.5" Margin="17,20">
+                    <Path RenderTransformOrigin="0.5,0.5" Margin="17,20">
                             <Path.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -159,7 +160,7 @@
                     <Label Content="2"/>
                 </uc:FunctionKey.KeyValue>
             </uc:FunctionKey>
-            <uc:FunctionKey Grid.Row="10" >
+            <uc:FunctionKey Grid.Row="10" Tag="{x:Static enums:OperationEnum.Negation}">
                 <uc:FunctionKey.KeyValue>
                     <Label Content="+/-" FontSize="24"/>
                 </uc:FunctionKey.KeyValue>
@@ -180,8 +181,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <uc:SpecialKey  KeyValue="m-" Grid.Row="0" />
-            <uc:FunctionKey Grid.Row="2" >
+            <uc:SpecialKey  Tag="{x:Static enums:FunctionEnum.MemorySubstraction}" KeyValue="m-" Grid.Row="0" />
+            <uc:FunctionKey Grid.Row="2" Tag="{x:Static enums:OperationEnum.Factorial}" >
                 <uc:FunctionKey.KeyValue>
                     <Label Content="!"/>
                 </uc:FunctionKey.KeyValue>
@@ -222,28 +223,28 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <uc:SpecialKey  KeyValue="mr" Grid.Row="0" />
-            <uc:FunctionKey Grid.Row="2" >
+            <uc:SpecialKey Tag="{x:Static enums:FunctionEnum.MemoryRecall}"  KeyValue="mr" Grid.Row="0" />
+            <uc:FunctionKey Grid.Row="2" Tag="{x:Static enums:OperationEnum.Divide}">
                 <uc:FunctionKey.KeyValue>
                     <Label Content="÷" FontSize="40" Margin="0,-10,0,0" />
                 </uc:FunctionKey.KeyValue>
             </uc:FunctionKey>
-            <uc:FunctionKey Grid.Row="4" >
+            <uc:FunctionKey Grid.Row="4" Tag="{x:Static enums:OperationEnum.Multiply}">
                 <uc:FunctionKey.KeyValue>
                     <Label Content="×" FontSize="40" Margin="0,-10,0,0" />
                 </uc:FunctionKey.KeyValue>
             </uc:FunctionKey>
-            <uc:FunctionKey Grid.Row="6" >
+            <uc:FunctionKey Grid.Row="6" Tag="{x:Static enums:OperationEnum.Minus}">
                 <uc:FunctionKey.KeyValue>
                     <Label Content="-"/>
                 </uc:FunctionKey.KeyValue>
             </uc:FunctionKey>
-            <uc:FunctionKey Grid.Row="8" >
+            <uc:FunctionKey Grid.Row="8" Tag="{x:Static enums:OperationEnum.Plus}">
                 <uc:FunctionKey.KeyValue>
                     <Label Content="+"/>
                 </uc:FunctionKey.KeyValue>
             </uc:FunctionKey>
-            <uc:FunctionKey Grid.Row="10" >
+            <uc:FunctionKey Grid.Row="10" Tag="{x:Static enums:FunctionEnum.Result}">
                 <uc:FunctionKey.KeyValue>
                     <Label Content="="/>
                 </uc:FunctionKey.KeyValue>
