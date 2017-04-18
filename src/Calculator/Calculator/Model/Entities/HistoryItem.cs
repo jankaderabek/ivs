@@ -32,6 +32,10 @@ namespace Calculator.Model.Entities
             {
                 if (this.SecondOperand.HasValue)
                 {
+                    if ($"{this.FirstOperand} {StringEnum.GetStringValue(this.Function)} {this.SecondOperand.Value} = {this.Result}".Length > 25)
+                    {
+                        return this.Result.ToString();
+                    }
                     return $"{this.FirstOperand} {StringEnum.GetStringValue(this.Function)} {this.SecondOperand.Value} = {this.Result}";
                 }
 

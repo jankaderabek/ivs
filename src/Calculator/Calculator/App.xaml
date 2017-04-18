@@ -9,5 +9,6 @@
         <mvvm:MainViewModel x:Key="MainViewModel" />
         <converters:DoubleToShortStringConverter x:Key="DoubleToShortStringConverter"/>
         <converters:ValueLengthToFontSizeConverter x:Key="ValueLengthToFontSizeConverter" />
+        <converters:LongStringToShortStringConverter x:Key="LongStringToShortStringConverter" />
     </Application.Resources>
 </Application>

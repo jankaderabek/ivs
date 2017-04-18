@@ -19,7 +19,7 @@ namespace Calculator.ViewModel
 
             set
             {
-                this.historyItemsSource = new ObservableCollection<HistoryItem>(value.Take(historyLimit));
+                this.historyItemsSource = new ObservableCollection<HistoryItem>(value.Take(historyLimit).Reverse());
                 OnPropertyChanged();
             }
         }
