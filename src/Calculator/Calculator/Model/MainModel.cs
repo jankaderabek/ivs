@@ -152,7 +152,7 @@ namespace Calculator.Model
 
         public void RemoveLast()
         {
-            if (SelectedOperation.HasValue)
+            if (SelectedOperation.HasValue && !IsSingleOperandOperation(SelectedOperation.Value))
             {
                 SecondOperandString = RemoveLastDigit(SecondOperandString);
 
@@ -194,7 +194,7 @@ namespace Calculator.Model
 
             if (IsSingleOperandOperation(function))
             {
-                SecondOperandString = string.Empty;
+                secondOperandString = string.Empty;
             }
 
             this.SelectedOperation = function;
