@@ -20,7 +20,6 @@ run: all
 clean:
 	git clean -d -x -f
 	
-	
 doc: nuget
 	$(MSBUILD) Calculator\Calculator.sln $(PARAMETERS) /p:DocumentationFile=Doc.xml /t:Clean,Build 
 	if not exist "doc" mkdir "doc"
@@ -34,6 +33,9 @@ pack: doc
  	mkdir ..\..\xkader13_xzeman53_xjelin42\install
  	mkdir ..\..\xkader13_xzeman53_xjelin42\repo
  	mkdir ..\..\xkader13_xzeman53_xjelin42\doc
-	xcopy /s /D doc ..\..\xkader13_xzeman53_xjelin42\doc\	
+	xcopy /s /D /C /E /Q "install" "..\..\xkader13_xzeman53_xjelin42\install\"
+	xcopy /s /D /C doc "..\..\xkader13_xzeman53_xjelin42\doc\"	
 	git clean -d -x -f
-	xcopy /s /D ..\. ..\..\xkader13_xzeman53_xjelin42\repo\
+	xcopy /s /D ..\. "..\..\xkader13_xzeman53_xjelin42\repo\"
+	powershell -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::CreateFromDirectory('..\..\xkader13_xzeman53_xjelin42', '..\..\xkader13_xzeman53_xjelin42.zip'); }"
+	
