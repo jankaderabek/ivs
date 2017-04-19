@@ -10,7 +10,7 @@
         MouseLeftButtonDown="WindowDragAndMove" Icon="Images/icon.ico"
         Title="Calculator" Height="600" Width="350" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <Grid Name="Background">
+        <Grid Name="CvsBackground">
             <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="1">
                 <Canvas.Background>
                     <LinearGradientBrush EndPoint="0.3,1" StartPoint="0.5,0">
