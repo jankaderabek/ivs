@@ -25,11 +25,14 @@ namespace Calculator.Model
 
         public double? FirstOperand => ConvertStringToDouble(firstOperandString);
         public double? SecondOperand => ConvertStringToDouble(secondOperandString);
+
         public string Formula
         {
             get
             {
-                string operation = (selectedOperation == null ? string.Empty : StringEnum.GetStringValue(selectedOperation));
+                string operation = (selectedOperation == null
+                    ? string.Empty
+                    : StringEnum.GetStringValue(selectedOperation));
                 return $"{FirstOperand} {operation} {SecondOperand}";
             }
         }
@@ -50,10 +53,7 @@ namespace Calculator.Model
 
         private double Result
         {
-            get
-            {
-                return result;
-            }
+            get { return result; }
 
             set
             {
@@ -61,12 +61,10 @@ namespace Calculator.Model
                 ActualValueChanged?.Invoke(Result.ToString());
             }
         }
+
         public string FirstOperandString
         {
-            get
-            {
-                return firstOperandString;
-            }
+            get { return firstOperandString; }
 
             set
             {
@@ -75,12 +73,10 @@ namespace Calculator.Model
                 FormulaChanged?.Invoke(Formula);
             }
         }
+
         public string SecondOperandString
         {
-            get
-            {
-                return secondOperandString;
-            }
+            get { return secondOperandString; }
 
             set
             {
@@ -197,7 +193,22 @@ namespace Calculator.Model
                 secondOperandString = string.Empty;
             }
 
-            this.SelectedOperation = function;
+            if (SecondOperand.HasValue)
+            {
+                CalculateAndSelectOperation(function);
+            }
+            else
+            {
+                this.SelectedOperation = function;
+            }
+        }
+
+        private void CalculateAndSelectOperation(OperationEnum function)
+        {
+            CalculateFunction();
+
+            FirstOperandString = Result.ToString();
+            SelectedOperation = function;
         }
 
         public void AddDigit(string value)
