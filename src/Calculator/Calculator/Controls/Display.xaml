@@ -18,30 +18,37 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <ListView x:Name="MyHistoryView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VirtualizingStackPanel.IsVirtualizing="False" ItemsSource="{Binding HistoryItemsSource}" BorderThickness="0" Background="Transparent" >
+        <ListView x:Name="MyHistoryView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VirtualizingStackPanel.IsVirtualizing="False" 
+                  ItemsSource="{Binding HistoryItemsSource}" BorderThickness="0" Background="Transparent"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
             <ListView.InputBindings>
                 <MouseBinding MouseAction="LeftClick" Command="{Binding HistoryClickCommand}" CommandParameter="{Binding ElementName=MyHistoryView}"/>
             </ListView.InputBindings>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
-                        <TextBlock/>
+                        <TextBlock Text="{Binding DisplayString}" Foreground="White" TextAlignment="Right" HorizontalAlignment="Right" FontSize="18" ToolTip="{Binding DisplayString}">
+                            <TextBlock.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding Source={StaticResource MainViewModel}, Path=HistoryClickCommand}" CommandParameter="{Binding}" />
+                            </TextBlock.InputBindings>
+                        </TextBlock>
                     </DockPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock x:Name="TbConsole" Text="{Binding ConsoleText}" ToolTip="{Binding ConsoleText}" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Foreground="White" FontSize="50" VerticalAlignment="Bottom"  HorizontalAlignment="Right" Margin="15,0,0,0"/>
+        <TextBlock Text="{Binding SelectedOperation, Converter={StaticResource LongStringToShortStringConverter}}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Foreground="White" Opacity=".75" Margin="0,0,15,0"/>
+        <TextBlock x:Name="TbConsole" Text="{Binding ConsoleText, Converter={StaticResource DoubleToShortStringConverter}}" ToolTip="{Binding ConsoleText}" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Foreground="White" FontSize="{Binding ConsoleText, Converter={StaticResource ValueLengthToFontSizeConverter}}" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="10,15,0,0"/>
         <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Padding="10" Background="Transparent" Focusable="True" FocusVisualStyle="{x:Null}">
             <Border.InputBindings>
-                <MouseBinding MouseAction="LeftClick" Command="{Binding CopyClickCommand}" CommandParameter="{Binding ElementName=TbConsole}" />
-                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding CopyClickCommand}" CommandParameter="{Binding ElementName=TbConsole}" />
-                <KeyBinding Key="Enter" Command="{Binding CopyClickCommand}" CommandParameter="{Binding ElementName=TbConsole}"/>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding ClearClickCommand}" CommandParameter="{Binding ElementName=TbConsole}" />
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding ClearClickCommand}" CommandParameter="{Binding ElementName=TbConsole}" />
+                <KeyBinding Key="Enter" Command="{Binding ClearClickCommand}" CommandParameter="{Binding ElementName=TbConsole}"/>
             </Border.InputBindings>
             <Border.Resources>
-                <Storyboard x:Key="Select" TargetName="CopyButton">
+                <Storyboard x:Key="Select" TargetName="ClearButton">
                     <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To=".5" Duration="0:0:.05"/>
                 </Storyboard>
-                <Storyboard x:Key="UnSelect" TargetName="CopyButton">
+                <Storyboard x:Key="UnSelect" TargetName="ClearButton">
                     <DoubleAnimation Storyboard.TargetProperty="Opacity" From=".5" To="1" Duration="0:0:.2"/>
                 </Storyboard>
             </Border.Resources>
@@ -59,7 +66,7 @@
                     <BeginStoryboard Storyboard="{StaticResource UnSelect}" />
                 </EventTrigger>
             </Border.Triggers>
-            <Path x:Name="CopyButton"  Stretch="Uniform" Fill="White">
+            <Path x:Name="ClearButton"  Stretch="Uniform" Fill="White">
                 <Path.Data>
                     M451.717,99.715l-71.434-71.431C364.729,12.728,334,0,312,0H72C50,0,32,18,32,40v432c0,22,18,40,40,40h368
 		            c22,0,40-18,40-40V168C480,146,467.271,115.271,451.717,99.715z M429.09,122.343c1.564,1.565,3.125,3.487,4.639,5.657H352V46.272

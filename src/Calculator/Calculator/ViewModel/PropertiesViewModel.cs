@@ -1,13 +1,16 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using Calculator.Model.Entities;
 
 namespace Calculator.ViewModel
 {
     public partial class MainViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<string> historyItemsSource = new ObservableCollection<string>();
+        private ObservableCollection<HistoryItem> historyItemsSource = new ObservableCollection<HistoryItem>();
 
-        public ObservableCollection<string> HistoryItemsSource
+        public ObservableCollection<HistoryItem> HistoryItemsSource
         {
             get
             {
@@ -16,14 +19,14 @@ namespace Calculator.ViewModel
 
             set
             {
-                this.historyItemsSource = value;
-                OnPropertyChanged("HistoryItemsSource");
+                this.historyItemsSource = new ObservableCollection<HistoryItem>(value.Take(historyLimit).Reverse());
+                OnPropertyChanged();
             }
         }
 
-        private string consoleText = string.Empty;
+        private object consoleText;
 
-        public string ConsoleText
+        public object ConsoleText
         {
             get
             {
@@ -33,13 +36,33 @@ namespace Calculator.ViewModel
             set
             {
                 this.consoleText = value;
-                OnPropertyChanged("ConsoleText");
+                OnPropertyChanged();
             }
         }
 
+        private string selectedOperation;
+
+        public string SelectedOperation
+        {
+            get
+            {
+                return selectedOperation; 
+                
+            }
+            set
+            {
+                selectedOperation = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
+
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName)
+        protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = "")
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

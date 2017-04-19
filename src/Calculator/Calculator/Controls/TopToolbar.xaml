@@ -37,7 +37,7 @@
                 </Style.Triggers>
             </Style>
         </Grid.Resources>
-        <Canvas x:Name="Background" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Black" Opacity="0.3"/>
+        <Canvas x:Name="CvsBackground" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Black" Opacity="0.3"/>
         <Label Content="Calculator" FontSize="16" FontWeight="DemiBold" Foreground="White" Margin="5,0"/>
         <Border x:Name="CloseButton" HorizontalAlignment="Right" Width="35"  Focusable="True" FocusVisualStyle="{x:Null}" Background="Transparent" Margin="5,0">
             <Border.InputBindings>
