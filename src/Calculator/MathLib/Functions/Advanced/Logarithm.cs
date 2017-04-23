@@ -3,6 +3,9 @@ using MathLib.Interfaces;
 
 namespace MathLib.Functions.Advanced
 {
+    /// <summary>
+    /// Represents logarithm operation.
+    /// </summary>
     public class Logarithm : IAdvancedMethod
     {
         /// <summary>
