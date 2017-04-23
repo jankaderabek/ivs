@@ -5,8 +5,14 @@ using Xunit;
 
 namespace MathLibraryTests.AdvancedMethods
 {
+    /// <summary>
+    /// Test factorial
+    /// </summary>
     public class FactorialTest
     {
+        /// <summary>
+        /// Test simple factorial
+        /// </summary>
         [Fact]
         public void SimpleCalculateTest()
         {

@@ -5,8 +5,14 @@ using Xunit;
 
 namespace MathLib.Functions.Advanced
 {
+    /// <summary>
+    /// test negation
+    /// </summary>
     public class NegationTest
     {
+        /// <summary>
+        /// Test simple positive negation
+        /// </summary>
         [Fact]
         public void SimplePositiveNegationTest()
         {
@@ -15,6 +21,9 @@ namespace MathLib.Functions.Advanced
             Assert.Equal(5, negation.Calculate(-5));
         }
 
+        /// <summary>
+        /// Test simple negative negation
+        /// </summary>
         [Fact]
         public void SimpleNegativeNegationTest()
         {
@@ -23,6 +32,9 @@ namespace MathLib.Functions.Advanced
             Assert.Equal(-5, negation.Calculate(5));
         }
 
+        /// <summary>
+        /// Test float negation
+        /// </summary>
         [Fact]
         public void FloatNegationTest()
         {

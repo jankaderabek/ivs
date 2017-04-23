@@ -4,8 +4,14 @@ using Xunit;
 
 namespace MathLibraryTests.BasicMethods
 {
+    /// <summary>
+    /// Test substraction
+    /// </summary>
     public class SubstractionTest
     {
+        /// <summary>
+        /// Test simple substraction
+        /// </summary>
         [Fact]
         public void SimpleSubstractionTest()
         {
@@ -16,6 +22,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Equal(3, substraction.Calculate());
         }
 
+        /// <summary>
+        /// Test float substraction
+        /// </summary>
         [Fact]
         public void FloatSubstractionTest()
         {
@@ -27,6 +36,9 @@ namespace MathLibraryTests.BasicMethods
 
         }
 
+        /// <summary>
+        /// Test minimum operands
+        /// </summary>
         [Fact]
         public void MinimumOperandsTest()
         {
@@ -35,6 +47,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Throws(typeof(OneOrMoreOperandsRequiredExeption), () => substraction.Calculate());
         }
 
+        /// <summary>
+        /// Test one operands
+        /// </summary>
         [Fact]
         public void OneOperandTest()
         {
@@ -44,6 +59,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Equal(5, substraction.Calculate());
         }
 
+        /// <summary>
+        /// Test many operands
+        /// </summary>
         [Fact]
         public void MoreOperandsTest()
         {
@@ -56,6 +74,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Equal(-10, substraction.Calculate());
         }
 
+        /// <summary>
+        /// Test Calculate method with two operands
+        /// </summary>
         [Fact]
         public void OverloadCalculateTest()
         {
