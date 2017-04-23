@@ -29,7 +29,12 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "Calculator\Calculator\bin\Release\Calculator.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\IVS\Source\Repos\ivs\src\Calculator\Calculator\bin\Release\Calculator.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\IVS\Source\Repos\ivs\src\Calculator\Calculator\bin\Release\Calculator.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\IVS\Source\Repos\ivs\src\Calculator\Calculator\bin\Release\Calculator.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\IVS\Source\Repos\ivs\src\Calculator\Calculator\bin\Release\Calculator.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\IVS\Source\Repos\ivs\src\Calculator\Calculator\bin\Release\MathLib.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\IVS\Source\Repos\ivs\src\Calculator\Calculator\bin\Release\MathLib.pdb"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
