@@ -1,4 +1,4 @@
-MSBUILD = "C:\Program Files\MSBuild\14.0\bin\MSBuild.exe"
+MSBUILD = "C:\Program Files (x86)\MSBuild\14.0\bin\MSBuild.exe"
 PARAMETERS = /p:Configuration=Release
 COPY = copy /y
 
