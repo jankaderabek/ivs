@@ -1,0 +1,2 @@
+Vše probíhálo podle daného plánu.
+Projekt navíc zahrnuje rozšíření pro práci s paměti.
