@@ -1,5 +1,8 @@
 ﻿namespace Calculator.Model.Enums
 {
+    /// <summary>
+    /// Enumeration for functions
+    /// </summary>
     public enum FunctionEnum
     {
         MemoryAddition,

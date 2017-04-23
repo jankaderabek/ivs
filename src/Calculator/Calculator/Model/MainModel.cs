@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using Calculator.Model.Entities;
 using Calculator.Model.Enums;
@@ -10,10 +9,27 @@ using MathLib.Functions.Basic;
 
 namespace Calculator.Model
 {
+    /// <summary>
+    /// Delegate for actual value
+    /// </summary>
+    /// <param name="value">Changed actual value</param>
     public delegate void ActualValueChangedHandler(string value);
+
+    /// <summary>
+    /// Delegate for formula changes
+    /// </summary>
+    /// <param name="value">String value of actual formula</param>
     public delegate void FormulaChangedHandler(string value);
+
+    /// <summary>
+    /// Delegate for history items changes
+    /// </summary>
+    /// <param name="history">List of actual history items</param>
     public delegate void HistoryItemsChangedHandler(ObservableCollection<HistoryItem> history);
 
+    /// <summary>
+    /// MainModel class for Calculator app
+    /// </summary>
     internal class MainModel
     {
         private readonly MemoryItem memory;
@@ -23,9 +39,19 @@ namespace Calculator.Model
         private string secondOperandString;
         private double result;
 
+        /// <summary>
+        /// Property for first operand
+        /// </summary>
         public double? FirstOperand => ConvertStringToDouble(firstOperandString);
+
+        /// <summary>
+        /// Property for second operand
+        /// </summary>
         public double? SecondOperand => ConvertStringToDouble(secondOperandString);
 
+        /// <summary>
+        /// Property for calculation formula
+        /// </summary>
         public string Formula
         {
             get
@@ -37,6 +63,9 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Property for selected operation
+        /// </summary>
         private OperationEnum? SelectedOperation
         {
             get { return selectedOperation; }
@@ -47,8 +76,19 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Event for actual value changes
+        /// </summary>
         public event ActualValueChangedHandler ActualValueChanged;
+
+        /// <summary>
+        /// Event for formula changes
+        /// </summary>
         public event FormulaChangedHandler FormulaChanged;
+
+        /// <summary>
+        /// Event for history changes
+        /// </summary>
         public event HistoryItemsChangedHandler HistoryChanged;
 
         private double Result
@@ -62,6 +102,9 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Property for first operand to string
+        /// </summary>
         public string FirstOperandString
         {
             get { return firstOperandString; }
@@ -74,6 +117,9 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Property for second operand to string
+        /// </summary>
         public string SecondOperandString
         {
             get { return secondOperandString; }
@@ -86,9 +132,14 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Property for console actual value to string
+        /// </summary>
         public string ActualValue => SelectedOperation.HasValue ? SecondOperandString : FirstOperandString;
 
-
+        /// <summary>
+        /// MainModel constructor
+        /// </summary>
         public MainModel()
         {
             history = new ObservableCollection<HistoryItem>();
@@ -99,6 +150,10 @@ namespace Calculator.Model
             Clear();
         }
 
+        /// <summary>
+        /// Method invoking functions
+        /// </summary>
+        /// <param name="function"></param>
         public void InvokeFunction(FunctionEnum function)
         {
             switch (function)
@@ -146,6 +201,9 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Remove last digit from actual value
+        /// </summary>
         public void RemoveLast()
         {
             if (SelectedOperation.HasValue && !IsSingleOperandOperation(SelectedOperation.Value))
@@ -168,6 +226,9 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Clear console text
+        /// </summary>
         public void Clear()
         {
             result = 0;
@@ -176,11 +237,18 @@ namespace Calculator.Model
             SelectedOperation = null;
         }
 
+        /// <summary>
+        /// Calculate result
+        /// </summary>
         public void CalculateResult()
         {
             CalculateFunction();
         }
 
+        /// <summary>
+        /// Select operation
+        /// </summary>
+        /// <param name="function">operation to select</param>
         public void SelectOperation(OperationEnum function)
         {
             if (!FirstOperand.HasValue)
@@ -203,6 +271,10 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Calculate formula and select next operation
+        /// </summary>
+        /// <param name="function"></param>
         private void CalculateAndSelectOperation(OperationEnum function)
         {
             CalculateFunction();
@@ -211,6 +283,10 @@ namespace Calculator.Model
             SelectedOperation = function;
         }
 
+        /// <summary>
+        /// Add digit to console value
+        /// </summary>
+        /// <param name="value">digit to add</param>
         public void AddDigit(string value)
         {
             if (this.SelectedOperation.HasValue && !IsSingleOperandOperation(SelectedOperation.Value))
@@ -223,6 +299,10 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Select history item and prints to console
+        /// </summary>
+        /// <param name="item">History item to select</param>
         public void SelectHistory(HistoryItem item)
         {
             item = history.First((h) => h == item);
@@ -247,6 +327,9 @@ namespace Calculator.Model
             }
         }
 
+        /// <summary>
+        /// Clear properties for new calculation
+        /// </summary>
         private void NewMathProblem()
         {
             firstOperandString = string.Empty;
@@ -254,11 +337,18 @@ namespace Calculator.Model
             SelectedOperation = null;
         }
 
+        /// <summary>
+        /// Add actual formula to history list
+        /// </summary>
+        /// <param name="item"></param>
         private void AddToHistory(HistoryItem item)
         {
             history.Insert(0, item);
         }
 
+        /// <summary>
+        /// Calculation of furmula
+        /// </summary>
         private void CalculateFunction()
         {
             if (SelectedOperation == null ||
@@ -320,16 +410,31 @@ namespace Calculator.Model
             NewMathProblem();
         }
 
+        /// <summary>
+        /// Remove last digit from console
+        /// </summary>
+        /// <param name="value">Value to remove</param>
+        /// <returns></returns>
         private static string RemoveLastDigit(string value)
         {
             return value.Length > 1 ? value.Substring(0, value.Length - 1) : string.Empty;
         }
 
+        /// <summary>
+        /// Check if operation is unary type
+        /// </summary>
+        /// <param name="function">Operation to check</param>
+        /// <returns></returns>
         private static bool IsSingleOperandOperation(OperationEnum function)
         {
             return function == OperationEnum.Factorial || function == OperationEnum.Negation;
         }
 
+        /// <summary>
+        /// Convert string to double
+        /// </summary>
+        /// <param name="stringValue">String to convert</param>
+        /// <returns>Return double if success, otherwise returns null</returns>
         private static double? ConvertStringToDouble(string stringValue)
         {
             if (string.IsNullOrEmpty(stringValue))
@@ -340,6 +445,12 @@ namespace Calculator.Model
             return double.Parse(stringValue.Trim(','));
         }
 
+        /// <summary>
+        /// Check double value extensibility
+        /// </summary>
+        /// <param name="value">String value of double number</param>
+        /// <param name="addition">string to add</param>
+        /// <returns>Return true if value can be extends otherwise false</returns>
         private static bool CheckNumberExtensibility(string value, string addition)
         {
             var number = 0;
@@ -356,6 +467,13 @@ namespace Calculator.Model
 
             return !(number == 0 && value == "0");
         }
+
+        /// <summary>
+        /// Add digit to value
+        /// </summary>
+        /// <param name="value">String number to be extends</param>
+        /// <param name="addition">Addition value</param>
+        /// <returns></returns>
         private static string AddDigit(string value, string addition)
         {
             if (CheckNumberExtensibility(value, addition))

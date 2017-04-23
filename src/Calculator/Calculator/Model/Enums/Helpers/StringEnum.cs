@@ -3,8 +3,16 @@ using System.Reflection;
 
 namespace Calculator.Model.Enums.Helpers
 {
+    /// <summary>
+    /// StringEnum helper class for work with string flags in enums
+    /// </summary>
     public static class StringEnum
     {
+        /// <summary>
+        /// Returns string from "StringValue" flag from enum value
+        /// </summary>
+        /// <param name="value">Enum value with "StringValue" flag</param>
+        /// <returns>Returns string from "StringValue" flag from enum value</returns>
         public static string GetStringValue(Enum value)
         {
             string output = null;

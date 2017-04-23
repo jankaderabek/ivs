@@ -6,10 +6,16 @@ using Calculator.Model.Entities;
 
 namespace Calculator.ViewModel
 {
+    /// <summary>
+    /// MainViewModel class for calculator app
+    /// </summary>
     public partial class MainViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<HistoryItem> historyItemsSource = new ObservableCollection<HistoryItem>();
 
+        /// <summary>
+        /// History list
+        /// </summary>
         public ObservableCollection<HistoryItem> HistoryItemsSource
         {
             get
@@ -26,6 +32,9 @@ namespace Calculator.ViewModel
 
         private object consoleText;
 
+        /// <summary>
+        /// Console text
+        /// </summary>
         public object ConsoleText
         {
             get
@@ -42,6 +51,9 @@ namespace Calculator.ViewModel
 
         private string selectedOperation;
 
+        /// <summary>
+        /// Selected operation
+        /// </summary>
         public string SelectedOperation
         {
             get
@@ -59,9 +71,15 @@ namespace Calculator.ViewModel
 
 
 
-
+        /// <summary>
+        /// Event for propertyChanged
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// OnPropertyChanged for properties changes
+        /// </summary>
+        /// <param name="propertyName">property name with change</param>
         protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = "")
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
