@@ -9,7 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathLib", "MathLib\MathLib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathLibraryTests", "MathLibraryTests\MathLibraryTests.csproj", "{A04761A2-0289-4ED7-8D51-DEE27088FDC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardDeviation", "StandardDeviation\StandardDeviation.csproj", "{EB480EB3-6046-41F6-A7E3-FD7817523449}"
+EndProject
 Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -27,6 +32,10 @@ Global
 		{A04761A2-0289-4ED7-8D51-DEE27088FDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A04761A2-0289-4ED7-8D51-DEE27088FDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A04761A2-0289-4ED7-8D51-DEE27088FDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB480EB3-6046-41F6-A7E3-FD7817523449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB480EB3-6046-41F6-A7E3-FD7817523449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB480EB3-6046-41F6-A7E3-FD7817523449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB480EB3-6046-41F6-A7E3-FD7817523449}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
