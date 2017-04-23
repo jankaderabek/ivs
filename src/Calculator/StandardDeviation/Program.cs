@@ -45,7 +45,7 @@ namespace StandardDeviation
         /// Compute standard deviation of field of double numbers.
         /// </summary>
         /// <param name="values">source values for compute</param>
-        /// <returns></returns>
+        /// <returns>standard deviation of source values</returns>
         static double Compute(double[] values)
         {
             double tmp;
