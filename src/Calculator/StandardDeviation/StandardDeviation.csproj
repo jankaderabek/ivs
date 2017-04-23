@@ -47,9 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MathLib\MathLib.csproj">
       <Project>{9a484f30-4e61-4f4e-ba54-026ab5a8445e}</Project>
       <Name>MathLib</Name>

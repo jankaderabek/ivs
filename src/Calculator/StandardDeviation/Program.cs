@@ -5,10 +5,16 @@ using MathLib.Functions.Basic;
 
 namespace StandardDeviation
 {
+    /// <summary>
+    /// This class contains two static method for load numbers from stdin 
+    /// and compute therir standard deviation.
+    /// </summary>
     class Program
     {
-
-        static double[] numParse()
+        /// <summary>
+        /// Parse numbers divided by whitespaces from stdin.
+        /// </summary> 
+        static double[] NumParse()
         {
             string line;
             string sNumbers = "";
@@ -30,36 +36,43 @@ namespace StandardDeviation
             catch (Exception)
             {
                 Console.WriteLine("input error!");
-                System.Environment.Exit(-1);
+                Environment.Exit(-1);
             }
 
             return null;
         }
-
-        static double compute(double[] someDoubles)
+        /// <summary>
+        /// Compute standard deviation of field of double numbers.
+        /// </summary>
+        /// <param name="values">source values for compute</param>
+        /// <returns></returns>
+        static double Compute(double[] values)
         {
-            double tmp = 0;
+            double tmp;
 
             Addition addition = new Addition();
             Division division = new Division();
             Substraction substraction = new Substraction();
             Power power = new Power();
             Root root = new Root();
-
-            foreach (var num in someDoubles)
+            
+            //sum of all values
+            foreach (var num in values)
             {
                 addition.AddOperand(num);
             }
 
             var sum = addition.Calculate();
 
-            var avg = division.Calculate(sum, someDoubles.Length);
-
-            Console.WriteLine("avg: " + avg);
+            // calculate average value
+            var avg = division.Calculate(sum, values.Length);
 
             addition = new Addition();
 
-            foreach (var num in someDoubles)
+            // substract avg value from all input values
+            // power the inter-result
+            // and sum all results
+            foreach (var num in values)
             {
                 tmp = substraction.Calculate(num, avg);
                 tmp = power.Calculate(tmp);
@@ -67,17 +80,19 @@ namespace StandardDeviation
             }
 
             tmp = addition.Calculate();
-            tmp = division.Calculate(tmp, someDoubles.Length);
+            //divide sum of resulst by their count
+            tmp = division.Calculate(tmp, values.Length);
+
 
             return root.Calculate(tmp);
 
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
-            double[] numbers = numParse();
+            double[] numbers = NumParse();
 
-            Console.WriteLine("reslult: " + compute(numbers));
+            Console.WriteLine("reslult: " + Compute(numbers));
         }
     }
 }
