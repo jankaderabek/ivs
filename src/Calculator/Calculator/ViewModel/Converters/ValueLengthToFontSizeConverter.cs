@@ -4,6 +4,9 @@ using System.Windows.Data;
 
 namespace Calculator.ViewModel.Converters
 {
+    /// <summary>
+    /// Converter for value length to proper font size
+    /// </summary>
     public class ValueLengthToFontSizeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

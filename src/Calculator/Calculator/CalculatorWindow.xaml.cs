@@ -10,6 +10,11 @@ namespace Calculator
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Activate drag and move functionality for window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WindowDragAndMove(object sender, MouseButtonEventArgs e)
         {
             DragMove();

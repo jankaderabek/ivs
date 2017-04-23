@@ -2,6 +2,9 @@
 
 namespace Calculator.Model.Enums
 {
+    /// <summary>
+    /// OperationEnum enumeration for operations
+    /// </summary>
     public enum OperationEnum
     {
         [StringValue("+")]

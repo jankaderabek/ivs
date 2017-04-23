@@ -13,6 +13,9 @@ namespace Calculator.ViewModel
         private MainModel model;
         private const int historyLimit = 2;
 
+        /// <summary>
+        /// Constructor for MainViewModel
+        /// </summary>
         public MainViewModel()
         {
             model = new MainModel();
@@ -23,11 +26,19 @@ namespace Calculator.ViewModel
 
         #region CommandExecuteMethods
 
+        /// <summary>
+        /// Close click method
+        /// </summary>
+        /// <param name="obj"></param>
         public void ExecCloseClickCommand(object obj)
         {
             (obj as MainWindow)?.Close();
         }
 
+        /// <summary>
+        /// Method for minimalize window
+        /// </summary>
+        /// <param name="obj"></param>
         public void ExecMinimalizeClickCommand(object obj)
         {
             var mainWindow = obj as MainWindow;
@@ -38,11 +49,19 @@ namespace Calculator.ViewModel
             }
         }
 
+        /// <summary>
+        /// Method for open help dialog
+        /// </summary>
+        /// <param name="obj"></param>
         public void ExecHelpClickCommand(object obj)
         {
 
         }
 
+        /// <summary>
+        /// Mehtod for function click
+        /// </summary>
+        /// <param name="obj"></param>
         public void ExecFunctionKeyClickCommand(object obj)
         {
             var control = obj as ContentControl;
@@ -61,6 +80,10 @@ namespace Calculator.ViewModel
             }
         }
 
+        /// <summary>
+        /// Method for key press
+        /// </summary>
+        /// <param name="obj"></param>
         public void ExecKeyPressCommand(object obj)
         {
             if (obj is OperationEnum)
@@ -77,6 +100,10 @@ namespace Calculator.ViewModel
             }
         }
 
+        /// <summary>
+        /// Method for history click command
+        /// </summary>
+        /// <param name="obj"></param>
         public void ExecHistoryClickCommand(object obj)
         {
             if (obj is HistoryItem)
@@ -85,11 +112,19 @@ namespace Calculator.ViewModel
             }
         }
 
+        /// <summary>
+        /// Method fot clear button command
+        /// </summary>
+        /// <param name="obj"></param>
         public void ExecClearClickCommand(object obj)
         {
             model.Clear();
         }
 
+        /// <summary>
+        /// Method for back button click command
+        /// </summary>
+        /// <param name="obj"></param>
         public void ExecBackClickCommand(object obj)
         {
             model.RemoveLast();
@@ -97,6 +132,10 @@ namespace Calculator.ViewModel
 
         #endregion
 
+        /// <summary>
+        /// Invoke function
+        /// </summary>
+        /// <param name="function">function to invoke</param>
         private void InvokeFunction(FunctionEnum function)
         {
             try
@@ -109,6 +148,9 @@ namespace Calculator.ViewModel
             }
         }
 
+        /// <summary>
+        /// Calculate result
+        /// </summary>
         private void CalculateResult()
         {
             try
