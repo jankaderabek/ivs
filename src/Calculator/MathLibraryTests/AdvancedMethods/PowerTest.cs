@@ -5,8 +5,14 @@ using Xunit;
 
 namespace MathLibraryTests.AdvancedMethods
 {
+    /// <summary>
+    /// Test power
+    /// </summary>
     public class PowerTest
     {
+        /// <summary>
+        /// Test simple power
+        /// </summary>
         [Fact]
         public void SimpleCalculateTest()
         {
@@ -15,6 +21,9 @@ namespace MathLibraryTests.AdvancedMethods
             Assert.Equal(25, power.Calculate(5));
         }
 
+        /// <summary>
+        /// Test custom exponent
+        /// </summary>
         [Fact]
         public void CustomeExponentTest()
         {

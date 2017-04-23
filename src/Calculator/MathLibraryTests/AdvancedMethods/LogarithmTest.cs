@@ -5,8 +5,14 @@ using Xunit;
 
 namespace MathLibraryTests.AdvancedMethods
 {
+    /// <summary>
+    /// Test logarithm
+    /// </summary>
     public class LogarithmTest
     {
+        /// <summary>
+        /// Test simple logarithm
+        /// </summary>
         [Fact]
         public void SimpleCalculateTest()
         {
@@ -15,6 +21,9 @@ namespace MathLibraryTests.AdvancedMethods
             Assert.Equal(1, logarithm.Calculate(10));
         }
 
+        /// <summary>
+        /// Test float logarithm
+        /// </summary>
         [Fact]
         public void FloatTest()
         {
@@ -24,6 +33,9 @@ namespace MathLibraryTests.AdvancedMethods
             Assert.InRange(result, 0.95, 0.96);
         }
 
+        /// <summary>
+        /// Test invalid logarithm
+        /// </summary>
         [Fact]
         public void InvalidLogarithmTest()
         {

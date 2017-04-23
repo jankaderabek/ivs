@@ -4,8 +4,14 @@ using Xunit;
 
 namespace MathLibraryTests.BasicMethods
 {
+    /// <summary>
+    /// Test multiplication
+    /// </summary>
     public class MultiplicationTest
     {
+        /// <summary>
+        /// Test simple multiplication
+        /// </summary>
         [Fact]
         public void SimpleMultiplicationTest()
         {
@@ -16,6 +22,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Equal(25, multiplication.Calculate());
         }
 
+        /// <summary>
+        /// Test multipliucation in float
+        /// </summary>
         [Fact]
         public void FloatMultiplicationTest()
         {
@@ -26,6 +35,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Equal(0.25, multiplication.Calculate());
         }
 
+        /// <summary>
+        /// Test minimum operands
+        /// </summary>
         [Fact]
         public void MinimumOperandsTest()
         {
@@ -34,6 +46,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Throws(typeof(OneOrMoreOperandsRequiredExeption), () => multiplication.Calculate());
         }
 
+        /// <summary>
+        /// Test one operand
+        /// </summary>
         [Fact]
         public void OneOperandTest()
         {
@@ -43,6 +58,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Equal(5, multiplication.Calculate());
         }
 
+        /// <summary>
+        /// Test with many operands
+        /// </summary>
         [Fact]
         public void MoreOperandsTest()
         {
@@ -55,6 +73,9 @@ namespace MathLibraryTests.BasicMethods
             Assert.Equal(40, multiplication.Calculate());
         }
 
+        /// <summary>
+        /// Test Calculate method with two operands
+        /// </summary>
         [Fact]
         public void OverloadCalculateTest()
         {
